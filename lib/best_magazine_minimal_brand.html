@@ -1,0 +1,238 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Suisse+Intl:wght@300;400&family=Helvetica+Neue:wght@200;300;400&family=EB+Garamond:ital,wght@0,400;1,400&family=Jost:wght@200;300;400;500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  .wrap{font-family:'Jost',sans-serif;color:var(--color-text-primary);background:var(--color-background-primary)}
+
+  .masthead{padding:3.5rem 2.5rem 3rem;border-bottom:1px solid var(--color-border-tertiary);text-align:center}
+  .mast-eyebrow{font-size:10px;font-weight:300;letter-spacing:6px;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:2rem}
+  .mast-wordmark{font-family:'Jost',sans-serif;font-weight:200;font-size:72px;letter-spacing:28px;color:var(--color-text-primary);text-transform:uppercase;line-height:1}
+  .mast-rule{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:1.5rem}
+  .mast-rule-line{width:40px;height:0.5px;background:var(--color-border-secondary)}
+  .mast-tagline{font-size:11px;font-weight:300;letter-spacing:4px;text-transform:uppercase;color:var(--color-text-tertiary)}
+
+  .sec{padding:2.5rem 2.5rem 0}
+  .sec-label{font-size:9px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:2rem;display:flex;align-items:center;gap:16px}
+  .sec-label::after{content:'';flex:1;height:0.5px;background:var(--color-border-tertiary)}
+
+  .palette{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:0}
+  .sw{border:0.5px solid var(--color-border-tertiary);overflow:hidden}
+  .sw:first-child{border-radius:4px 0 0 4px}
+  .sw:last-child{border-radius:0 4px 4px 0}
+  .sw-col{height:64px}
+  .sw-info{padding:10px 8px;background:var(--color-background-secondary)}
+  .sw-name{font-size:10px;font-weight:400;color:var(--color-text-primary);display:block}
+  .sw-hex{font-size:9px;color:var(--color-text-tertiary);display:block;margin-top:2px;font-family:monospace}
+  .sw-use{font-size:9px;color:var(--color-text-tertiary);display:block;margin-top:1px}
+
+  .type-row{border-bottom:0.5px solid var(--color-border-tertiary);padding:1.5rem 0;display:grid;grid-template-columns:100px 1fr;gap:24px;align-items:start}
+  .type-meta{font-size:10px;color:var(--color-text-tertiary);letter-spacing:1px;line-height:1.6;padding-top:4px}
+  .type-meta strong{display:block;font-weight:500;color:var(--color-text-secondary);font-size:10px;margin-bottom:4px}
+
+  .logo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--color-border-tertiary);border:0.5px solid var(--color-border-tertiary);overflow:hidden;border-radius:8px}
+  .logo-cell{padding:2.5rem 1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:110px}
+
+  .nav-preview{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden}
+  .nav-top{padding:0 2rem;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;justify-content:space-between;align-items:center;height:48px}
+  .nav-logo-sm{font-family:'Jost',sans-serif;font-weight:200;font-size:20px;letter-spacing:10px;color:var(--color-text-primary);text-transform:uppercase}
+  .nav-links-sm{display:flex;gap:24px}
+  .nav-links-sm span{font-size:10px;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:var(--color-text-secondary)}
+  .page-body{padding:2rem}
+  .page-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:2rem}
+  .cover-block{background:var(--color-background-secondary);aspect-ratio:3/2;border:0.5px solid var(--color-border-tertiary);display:flex;flex-direction:column;justify-content:flex-end;padding:1.25rem}
+  .cover-cat{font-size:9px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:8px}
+  .cover-title{font-family:'EB Garamond',serif;font-size:20px;font-weight:400;color:var(--color-text-primary);line-height:1.2}
+  .cover-byline{font-size:10px;color:var(--color-text-tertiary);margin-top:8px;letter-spacing:1px}
+  .side-stack{display:flex;flex-direction:column;gap:1rem}
+  .art-card{border-bottom:0.5px solid var(--color-border-tertiary);padding-bottom:1rem}
+  .art-card-cat{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:6px}
+  .art-card-title{font-family:'EB Garamond',serif;font-size:14px;color:var(--color-text-primary);line-height:1.4}
+  .art-card-meta{font-size:10px;color:var(--color-text-tertiary);margin-top:4px}
+
+  .spacing-demo{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:0.5px solid var(--color-border-tertiary);overflow:hidden;border-radius:8px}
+  .sp-item{padding:16px 10px;text-align:center;border-right:0.5px solid var(--color-border-tertiary)}
+  .sp-item:last-child{border-right:none}
+  .sp-box{background:var(--color-text-primary);margin:0 auto 10px;opacity:0.08}
+  .sp-num{font-size:13px;font-weight:400;color:var(--color-text-primary);display:block}
+  .sp-label{font-size:9px;color:var(--color-text-tertiary);letter-spacing:1px;display:block;margin-top:2px}
+
+  .rule-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+  .rule-card{padding:1.25rem;border:0.5px solid var(--color-border-tertiary);border-radius:8px}
+  .rule-n{font-family:'EB Garamond',serif;font-style:italic;font-size:32px;color:var(--color-text-secondary);line-height:1;margin-bottom:10px;opacity:0.4}
+  .rule-title{font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--color-text-primary);margin-bottom:6px}
+  .rule-desc{font-size:11px;font-weight:300;color:var(--color-text-secondary);line-height:1.6}
+
+  .divider{height:0.5px;background:var(--color-border-tertiary);margin:2.5rem 2.5rem 0}
+</style>
+
+<div class="wrap">
+
+  <div class="masthead">
+    <p class="mast-eyebrow">Brand Identity System — Revised</p>
+    <div class="mast-wordmark">Best</div>
+    <div class="mast-rule">
+      <div class="mast-rule-line"></div>
+      <span class="mast-tagline">The Magazine</span>
+      <div class="mast-rule-line"></div>
+    </div>
+  </div>
+
+  <div class="sec" style="margin-top:2.5rem">
+    <div class="sec-label">Color palette — pure restraint</div>
+    <div class="palette">
+      <div class="sw">
+        <div class="sw-col" style="background:#FFFFFF"></div>
+        <div class="sw-info"><span class="sw-name">White</span><span class="sw-hex">#FFFFFF</span><span class="sw-use">Page bg</span></div>
+      </div>
+      <div class="sw">
+        <div class="sw-col" style="background:#F5F5F5"></div>
+        <div class="sw-info"><span class="sw-name">Off-white</span><span class="sw-hex">#F5F5F5</span><span class="sw-use">Surface</span></div>
+      </div>
+      <div class="sw">
+        <div class="sw-col" style="background:#E8E8E8"></div>
+        <div class="sw-info"><span class="sw-name">Light gray</span><span class="sw-hex">#E8E8E8</span><span class="sw-use">Borders</span></div>
+      </div>
+      <div class="sw">
+        <div class="sw-col" style="background:#999999"></div>
+        <div class="sw-info"><span class="sw-name">Mid gray</span><span class="sw-hex">#999999</span><span class="sw-use">Captions</span></div>
+      </div>
+      <div class="sw">
+        <div class="sw-col" style="background:#333333"></div>
+        <div class="sw-info"><span class="sw-name">Charcoal</span><span class="sw-hex">#333333</span><span class="sw-use">Body text</span></div>
+      </div>
+      <div class="sw">
+        <div class="sw-col" style="background:#111111"></div>
+        <div class="sw-info"><span class="sw-name">Near-black</span><span class="sw-hex">#111111</span><span class="sw-use">Headlines</span></div>
+      </div>
+    </div>
+    <p style="font-size:11px;color:var(--color-text-tertiary);margin-top:12px;font-style:italic;font-family:'EB Garamond',serif">No accent color. Black and white is the accent.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="sec" style="margin-top:2.5rem">
+    <div class="sec-label">Typography — three roles, zero noise</div>
+
+    <div class="type-row">
+      <div class="type-meta"><strong>Wordmark</strong>Jost 200<br>letter-spacing 28px<br>uppercase</div>
+      <div style="font-family:'Jost',sans-serif;font-weight:200;font-size:48px;letter-spacing:16px;text-transform:uppercase;color:var(--color-text-primary)">BEST</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><strong>Feature headlines</strong>EB Garamond 400<br>36–52px<br>normal/italic</div>
+      <div>
+        <div style="font-family:'EB Garamond',serif;font-size:36px;font-weight:400;color:var(--color-text-primary);line-height:1.15">The Quiet Power<br><em>of Doing Less</em></div>
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><strong>Navigation / Labels</strong>Jost 300<br>10px, 4px tracking<br>uppercase</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Jost',sans-serif;font-weight:300;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--color-text-secondary)">Fashion &nbsp;&nbsp; Beauty &nbsp;&nbsp; Culture &nbsp;&nbsp; Living &nbsp;&nbsp; Power</div>
+        <div style="font-family:'Jost',sans-serif;font-weight:300;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--color-text-tertiary)">Spring 2026 &nbsp;&nbsp; Issue No. 12</div>
+      </div>
+    </div>
+
+    <div class="type-row" style="border-bottom:none">
+      <div class="type-meta"><strong>Body copy</strong>Jost 300<br>15–16px<br>line-height 1.8</div>
+      <div style="font-family:'Jost',sans-serif;font-weight:300;font-size:15px;line-height:1.8;color:var(--color-text-secondary);max-width:400px">The art of restraint is not the absence of ambition. It is the confidence to let a single sentence, a single image, carry the entire weight of meaning.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="sec" style="margin-top:2.5rem">
+    <div class="sec-label">Logo variants</div>
+    <div class="logo-grid">
+      <div class="logo-cell" style="background:#FFFFFF">
+        <div style="font-family:'Jost',sans-serif;font-weight:200;font-size:32px;letter-spacing:14px;color:#111111;text-transform:uppercase">BEST</div>
+        <div style="font-family:'Jost',sans-serif;font-weight:300;font-size:9px;letter-spacing:5px;color:#999;text-transform:uppercase;margin-top:4px">The Magazine</div>
+      </div>
+      <div class="logo-cell" style="background:#111111">
+        <div style="font-family:'Jost',sans-serif;font-weight:200;font-size:32px;letter-spacing:14px;color:#FFFFFF;text-transform:uppercase">BEST</div>
+        <div style="font-family:'Jost',sans-serif;font-weight:300;font-size:9px;letter-spacing:5px;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-top:4px">The Magazine</div>
+      </div>
+      <div class="logo-cell" style="background:#F5F5F5">
+        <div style="font-family:'Jost',sans-serif;font-weight:200;font-size:32px;letter-spacing:14px;color:#111111;text-transform:uppercase">BEST</div>
+      </div>
+      <div class="logo-cell" style="background:#FFFFFF;border-top:0.5px solid #E8E8E8">
+        <div style="font-family:'EB Garamond',serif;font-weight:400;font-style:italic;font-size:36px;color:#111111">Best</div>
+        <div style="font-family:'Jost',sans-serif;font-weight:300;font-size:9px;letter-spacing:5px;color:#999;text-transform:uppercase;margin-top:2px">Magazine</div>
+      </div>
+    </div>
+    <p style="font-size:11px;color:var(--color-text-tertiary);margin-top:10px">All-caps geometric · All-caps reversed · Wordmark only · Italic serif editorial</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="sec" style="margin-top:2.5rem">
+    <div class="sec-label">Website layout preview</div>
+    <div class="nav-preview">
+      <div class="nav-top">
+        <span style="font-size:10px;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:var(--color-text-tertiary)">Issue 12</span>
+        <span class="nav-logo-sm">BEST</span>
+        <span style="font-size:10px;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:var(--color-text-tertiary)">Subscribe</span>
+      </div>
+      <div style="padding:0 2rem;border-bottom:0.5px solid var(--color-border-tertiary);height:40px;display:flex;align-items:center;justify-content:center">
+        <div class="nav-links-sm">
+          <span>Fashion</span><span>Beauty</span><span>Culture</span><span>Living</span><span>Power</span>
+        </div>
+      </div>
+      <div class="page-body">
+        <div class="page-grid">
+          <div>
+            <div class="cover-block">
+              <div class="cover-cat">Cover Story</div>
+              <div class="cover-title">The New Language of Quiet Luxury</div>
+              <div class="cover-byline">By Isabelle Chen &nbsp;·&nbsp; 12 min read</div>
+            </div>
+          </div>
+          <div class="side-stack">
+            <div class="art-card">
+              <div class="art-card-cat">Fashion</div>
+              <div class="art-card-title">Ten Pieces. One Wardrobe. Zero Compromise.</div>
+              <div class="art-card-meta">6 min read</div>
+            </div>
+            <div class="art-card">
+              <div class="art-card-cat">Beauty</div>
+              <div class="art-card-title">The Skinimalism Edit for Every Complexion</div>
+              <div class="art-card-meta">4 min read</div>
+            </div>
+            <div class="art-card" style="border-bottom:none">
+              <div class="art-card-cat">Power</div>
+              <div class="art-card-title">Women Rewriting the Rules of Finance</div>
+              <div class="art-card-meta">8 min read</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="sec" style="margin-top:2.5rem">
+    <div class="sec-label">Spacing scale</div>
+    <div class="spacing-demo">
+      <div class="sp-item"><div class="sp-box" style="width:4px;height:4px"></div><span class="sp-num">4</span><span class="sp-label">Micro</span></div>
+      <div class="sp-item"><div class="sp-box" style="width:8px;height:8px"></div><span class="sp-num">8</span><span class="sp-label">Tight</span></div>
+      <div class="sp-item"><div class="sp-box" style="width:16px;height:16px"></div><span class="sp-num">16</span><span class="sp-label">Base</span></div>
+      <div class="sp-item"><div class="sp-box" style="width:32px;height:32px"></div><span class="sp-num">32</span><span class="sp-label">Section</span></div>
+      <div class="sp-item"><div class="sp-box" style="width:48px;height:48px"></div><span class="sp-num">80</span><span class="sp-label">Page</span></div>
+    </div>
+    <p style="font-size:11px;color:var(--color-text-tertiary);margin-top:10px;font-family:'EB Garamond',serif;font-style:italic">White space is not empty — it is breathing room. It is confidence.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="sec" style="margin-top:2.5rem;padding-bottom:3rem">
+    <div class="sec-label">Design principles</div>
+    <div class="rule-grid">
+      <div class="rule-card"><div class="rule-n">1</div><div class="rule-title">Zero decoration</div><div class="rule-desc">No gradients, no textures, no shadows. Structure and white space do all the work.</div></div>
+      <div class="rule-card"><div class="rule-n">2</div><div class="rule-title">Type as image</div><div class="rule-desc">Headlines carry visual weight. Large, spaced type is the photography of the page.</div></div>
+      <div class="rule-card"><div class="rule-n">3</div><div class="rule-title">One column grid</div><div class="rule-desc">Articles breathe at full width. No sidebars cluttering the reading experience.</div></div>
+      <div class="rule-card"><div class="rule-n">4</div><div class="rule-title">Slow scroll</div><div class="rule-desc">Content reveals with subtle fade-ins. Nothing rushes. The pace is intentional.</div></div>
+    </div>
+  </div>
+
+</div>

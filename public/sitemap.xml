@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Home -->
+  <url>
+    <loc>https://www.bestmagazine.ca/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Fashion -->
+  <url><loc>https://www.bestmagazine.ca/fashion/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.bestmagazine.ca/fashion/trends/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/fashion/street-style/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/fashion/designers/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/fashion/runway/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/fashion/seasonal/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/fashion/sustainable/</loc></url>
+
+  <!-- Beauty -->
+  <url><loc>https://www.bestmagazine.ca/beauty/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.bestmagazine.ca/beauty/makeup/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/beauty/skincare/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/beauty/hair/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/beauty/wellness/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/beauty/expert-tips/</loc></url>
+
+  <!-- Luxury -->
+  <url><loc>https://www.bestmagazine.ca/luxury/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bestmagazine.ca/luxury/watches/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/luxury/cars/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/luxury/hotels/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/luxury/experiences/</loc></url>
+
+  <!-- Culture -->
+  <url><loc>https://www.bestmagazine.ca/culture/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/culture/film-tv/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/culture/music/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/culture/art/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/culture/books/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/culture/opinion/</loc></url>
+
+  <!-- Celebrity -->
+  <url><loc>https://www.bestmagazine.ca/celebrity/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/celebrity/interviews/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/celebrity/red-carpet/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/celebrity/style/</loc></url>
+
+  <!-- Business -->
+  <url><loc>https://www.bestmagazine.ca/business/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/business/industry-news/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/business/brand-spotlights/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/business/marketing-pr/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/business/creator-economy/</loc></url>
+
+  <!-- Shop -->
+  <url><loc>https://www.bestmagazine.ca/shop/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/shop/editor-picks/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/shop/best-of/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/shop/gift-guides/</loc></url>
+
+  <!-- Local -->
+  <url><loc>https://www.bestmagazine.ca/local/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/local/toronto/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/local/vancouver/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/local/montreal/</loc></url>
+
+  <!-- Media -->
+  <url><loc>https://www.bestmagazine.ca/media/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/media/video/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/media/podcast/</loc></url>
+
+  <!-- Events -->
+  <url><loc>https://www.bestmagazine.ca/events/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/events/upcoming/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/events/past/</loc></url>
+
+  <!-- Magazine -->
+  <url><loc>https://www.bestmagazine.ca/magazine/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/magazine/latest-issue/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/magazine/archive/</loc></url>
+
+  <!-- Work With Us -->
+  <url><loc>https://www.bestmagazine.ca/work-with-us/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/work-with-us/advertise/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/work-with-us/sponsored-content/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/work-with-us/partnerships/</loc></url>
+
+  <!-- Utility Pages -->
+  <url><loc>https://www.bestmagazine.ca/about/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/contact/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/privacy-policy/</loc></url>
+  <url><loc>https://www.bestmagazine.ca/terms/</loc></url>
+</urlset>
