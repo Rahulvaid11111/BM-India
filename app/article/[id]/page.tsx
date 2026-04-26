@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getArticleById, getArticles, getArticlesByCategory } from "@/lib/get-articles";
 import { notFound } from "next/navigation";
+import { ArticleContent } from "@/components/ArticleContent";
 
 export async function generateStaticParams() {
   const articles = await getArticles();
@@ -66,39 +67,43 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
               {article.excerpt}
             </p>
 
-            <div className="space-y-5 text-[15px] leading-[1.8] font-light">
-              <p>
-                In the ever-evolving landscape of modern {article.category.toLowerCase()}, 
-                we find ourselves at a fascinating crossroads where tradition meets innovation. 
-                This exploration delves deep into the nuances that make this moment particularly 
-                significant for enthusiasts and newcomers alike.
-              </p>
+            {article.content ? (
+              <ArticleContent content={article.content} images={article.images} />
+            ) : (
+              <div className="space-y-5 text-[15px] leading-[1.8] font-light">
+                <p>
+                  In the ever-evolving landscape of modern {article.category.toLowerCase()}, 
+                  we find ourselves at a fascinating crossroads where tradition meets innovation. 
+                  This exploration delves deep into the nuances that make this moment particularly 
+                  significant for enthusiasts and newcomers alike.
+                </p>
 
-              <p>
-                The attention to detail and craftsmanship evident in today's offerings speaks 
-                to a broader cultural shift toward appreciation of quality and authenticity. 
-                Industry leaders and emerging talents are pushing boundaries while respecting 
-                the foundations that have defined excellence for generations.
-              </p>
+                <p>
+                  The attention to detail and craftsmanship evident in today's offerings speaks 
+                  to a broader cultural shift toward appreciation of quality and authenticity. 
+                  Industry leaders and emerging talents are pushing boundaries while respecting 
+                  the foundations that have defined excellence for generations.
+                </p>
 
-              <h2 className="text-[28px] leading-[1.15] font-serif font-normal mt-10 mb-5">
-                A New Perspective
-              </h2>
+                <h2 className="text-[28px] leading-[1.15] font-serif font-normal mt-10 mb-5">
+                  A New Perspective
+                </h2>
 
-              <p>
-                What sets this moment apart is the convergence of accessibility and exclusivity. 
-                The democratization of information has empowered a new generation of connoisseurs 
-                who demand both transparency and artistry. This dynamic has fostered an environment 
-                where innovation thrives alongside time-honored traditions.
-              </p>
+                <p>
+                  What sets this moment apart is the convergence of accessibility and exclusivity. 
+                  The democratization of information has empowered a new generation of connoisseurs 
+                  who demand both transparency and artistry. This dynamic has fostered an environment 
+                  where innovation thrives alongside time-honored traditions.
+                </p>
 
-              <p>
-                As we look toward the future, it's clear that the landscape will continue to 
-                evolve in unexpected ways. The key players in this space are not just responding 
-                to trends—they're actively shaping them, creating a dialogue between creator and 
-                consumer that enriches the entire experience.
-              </p>
-            </div>
+                <p>
+                  As we look toward the future, it's clear that the landscape will continue to 
+                  evolve in unexpected ways. The key players in this space are not just responding 
+                  to trends—they're actively shaping them, creating a dialogue between creator and 
+                  consumer that enriches the entire experience.
+                </p>
+              </div>
+            )}
           </div>
         </article>
 

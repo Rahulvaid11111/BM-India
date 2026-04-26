@@ -8,6 +8,8 @@ export interface Article {
   image: string;
   featured?: boolean;
   trending?: boolean;
+  content?: string;
+  images?: string[];
 }
 
 export const categories = [

@@ -120,6 +120,8 @@ export function transformPostToArticle(post: DatabasePost): Article & { _timesta
     image: post.cover_image,
     featured: post.featured,
     trending: post.trending,
+    content: post.content,
+    images: post.images || [],
     _timestamp: timestamp, // Hidden property for sorting
   };
 }
