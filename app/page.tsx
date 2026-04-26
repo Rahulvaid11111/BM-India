@@ -17,7 +17,7 @@ export default async function Home() {
         {articles[0] && (
           <article className="mb-12">
             <Link href={`/article/${articles[0].id}`} className="group block">
-              <div className="relative aspect-[21/9] mb-6 overflow-hidden bg-gray-100">
+              <div className="relative aspect-[21/9] mb-6 overflow-hidden">
                 <Image
                   src={articles[0].image}
                   alt={articles[0].title}
@@ -63,7 +63,7 @@ export default async function Home() {
                         src={article.image}
                         alt={article.title}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                       />
                     </div>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
@@ -96,7 +96,7 @@ export default async function Home() {
                         src={article.image}
                         alt={article.title}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                       />
                     </div>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
@@ -129,7 +129,7 @@ export default async function Home() {
                         src={article.image}
                         alt={article.title}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                       />
                     </div>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
@@ -158,7 +158,7 @@ export default async function Home() {
                         src={article.image}
                         alt={article.title}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                       />
                     </div>
                     <div className="flex-1">

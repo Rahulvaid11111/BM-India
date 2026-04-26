@@ -46,7 +46,7 @@ export function ResponsiveImage({ src, alt, priority = false, className = '' }: 
         src={src}
         alt={alt}
         fill
-        className="object-contain bg-gray-100"
+        className="object-contain"
         priority={priority}
         onLoad={handleImageLoad}
       />

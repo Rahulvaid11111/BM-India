@@ -41,7 +41,7 @@ export function ImageGallery({ images, variant = 'slider' }: ImageGalleryProps) 
                 src={image}
                 alt={`Gallery image ${index + 1}`}
                 fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
+                className="object-contain"
                 onLoad={(e) => {
                   const img = e.target as HTMLImageElement;
                   setImageDimensions(prev => ({
@@ -75,7 +75,7 @@ export function ImageGallery({ images, variant = 'slider' }: ImageGalleryProps) 
                 src={image}
                 alt={`Image ${index + 1}`}
                 fill
-                className="object-cover"
+                className="object-contain"
                 onLoad={(e) => {
                   const img = e.target as HTMLImageElement;
                   setImageDimensions(prev => ({
@@ -116,7 +116,7 @@ export function ImageGallery({ images, variant = 'slider' }: ImageGalleryProps) 
           src={currentImage}
           alt={`Slide ${currentIndex + 1} of ${uniqueImages.length}`}
           fill
-          className="object-cover"
+          className="object-contain bg-gray-50"
           priority={currentIndex === 0}
           onLoad={(e) => {
             const img = e.target as HTMLImageElement;

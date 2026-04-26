@@ -16,7 +16,7 @@ export default function ArticleCard({ article, variant = "default" }: ArticleCar
             src={article.image}
             alt={article.title}
             fill
-            className="object-cover group-hover:opacity-95 transition-opacity duration-500"
+            className="object-contain group-hover:opacity-95 transition-opacity duration-500"
           />
         </div>
         <div className="max-w-2xl">
@@ -41,7 +41,7 @@ export default function ArticleCard({ article, variant = "default" }: ArticleCar
             src={article.image}
             alt={article.title}
             fill
-            className="object-cover group-hover:opacity-95 transition-opacity duration-500"
+            className="object-contain group-hover:opacity-95 transition-opacity duration-500"
           />
         </div>
         <div>
@@ -65,7 +65,7 @@ export default function ArticleCard({ article, variant = "default" }: ArticleCar
             src={article.image}
             alt={article.title}
             fill
-            className="object-cover group-hover:opacity-95 transition-opacity duration-500"
+            className="object-contain group-hover:opacity-95 transition-opacity duration-500"
           />
         </div>
         <div className="flex-1">
@@ -87,7 +87,7 @@ export default function ArticleCard({ article, variant = "default" }: ArticleCar
           src={article.image}
           alt={article.title}
           fill
-          className="object-cover group-hover:opacity-95 transition-opacity duration-500"
+          className="object-contain group-hover:opacity-95 transition-opacity duration-500"
         />
       </div>
       <div>
