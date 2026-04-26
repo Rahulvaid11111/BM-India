@@ -118,9 +118,93 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
           </div>
         </article>
 
-        {/* Related Articles */}
-        {relatedArticles.length > 0 && (
-          <section className="border-t border-gray-300 py-12">
+        {/* Sidebar */}
+        <aside className="lg:col-span-4">
+          {/* Latest Articles */}
+          <div className="mb-10 pb-10 border-b border-gray-200">
+            <h3 className="text-[18px] font-bold uppercase tracking-wider mb-6">Latest Articles</h3>
+            <div className="space-y-6">
+              {latestArticles.map((latest) => (
+                <article key={latest.id} className="group flex gap-4">
+                  <div className="flex-shrink-0 w-24 h-24 relative overflow-hidden">
+                    <Link href={`/article/${latest.id}`}>
+                      <Image
+                        src={latest.image}
+                        alt={latest.title}
+                        fill
+                        className="object-contain"
+                      />
+                    </Link>
+                  </div>
+                  <div className="flex-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-1 block">
+                      {latest.category}
+                    </span>
+                    <Link href={`/article/${latest.id}`}>
+                      <h4 className="text-[14px] leading-[1.4] font-serif font-normal group-hover:opacity-70">
+                        {latest.title}
+                      </h4>
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          {/* Trending Articles */}
+          {trendingArticles.length > 0 && (
+            <div className="mb-10 pb-10 border-b border-gray-200">
+              <h3 className="text-[18px] font-bold uppercase tracking-wider mb-6">Trending</h3>
+              <div className="space-y-6">
+                {trendingArticles.map((trending) => (
+                  <article key={trending.id} className="group flex gap-4">
+                    <div className="flex-shrink-0 w-24 h-24 relative overflow-hidden">
+                      <Link href={`/article/${trending.id}`}>
+                        <Image
+                          src={trending.image}
+                          alt={trending.title}
+                          fill
+                          className="object-contain"
+                        />
+                      </Link>
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-1 block">
+                        {trending.category}
+                      </span>
+                      <Link href={`/article/${trending.id}`}>
+                        <h4 className="text-[14px] leading-[1.4] font-serif font-normal group-hover:opacity-70">
+                          {trending.title}
+                        </h4>
+                      </Link>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Categories */}
+          <div>
+            <h3 className="text-[18px] font-bold uppercase tracking-wider mb-6">Categories</h3>
+            <div className="space-y-2">
+              {categories.map((cat) => (
+                <Link
+                  key={cat}
+                  href={`/category/${cat.toLowerCase()}`}
+                  className="block text-[14px] font-normal hover:opacity-70 py-1"
+                >
+                  {cat}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      {/* Related Articles */}
+      {relatedArticles.length > 0 && (
+        <section className="max-w-[1280px] mx-auto px-5 border-t border-gray-300 py-12">
             <h2 className="text-[28px] font-serif font-normal leading-[1.15] mb-8">More in {article.category}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-8">
               {relatedArticles.map((related) => (
@@ -131,7 +215,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
                         src={related.image}
                         alt={related.title}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                       />
                     </div>
                     <h3 className="text-[16px] leading-[1.4] font-serif font-normal group-hover:opacity-70">
