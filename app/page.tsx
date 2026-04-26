@@ -1,6 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getArticles } from "@/lib/get-articles";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
+
+// Revalidate this page every 60 seconds
+export const revalidate = 60;
 
 export default async function Home() {
   // Fetch all articles (merged from static + Supabase, sorted by newest first)
@@ -13,12 +17,12 @@ export default async function Home() {
         {articles[0] && (
           <article className="mb-12">
             <Link href={`/article/${articles[0].id}`} className="group block">
-              <div className="relative aspect-[21/9] mb-6 overflow-hidden">
+              <div className="relative aspect-[21/9] mb-6 overflow-hidden bg-gray-100">
                 <Image
                   src={articles[0].image}
                   alt={articles[0].title}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   priority
                 />
               </div>

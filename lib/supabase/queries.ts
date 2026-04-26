@@ -3,6 +3,7 @@ import { Article } from '../articles';
 
 /**
  * Fetch all published posts from Supabase
+ * Uses no-store cache to always fetch fresh data
  */
 export async function getAllPosts(): Promise<DatabasePost[]> {
   try {

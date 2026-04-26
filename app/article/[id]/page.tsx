@@ -3,6 +3,13 @@ import Link from "next/link";
 import { getArticleById, getArticles, getArticlesByCategory } from "@/lib/get-articles";
 import { notFound } from "next/navigation";
 import { ArticleContent } from "@/components/ArticleContent";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
+
+// Revalidate article pages every 60 seconds
+export const revalidate = 60;
+
+// Generate static params but allow dynamic rendering for new articles
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const articles = await getArticles();
@@ -51,15 +58,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
           </div>
 
           {/* Featured Image */}
-          <div className="relative aspect-[3/2] mb-8">
-            <Image
-              src={article.image}
-              alt={article.title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
+          <ResponsiveImage
+            src={article.image}
+            alt={article.title}
+            priority
+          />
 
           {/* Article Content */}
           <div className="prose-vogue">
