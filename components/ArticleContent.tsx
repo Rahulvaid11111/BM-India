@@ -59,7 +59,7 @@ export function ArticleContent({ content, images = [] }: ArticleContentProps) {
   const imagePlacements = getImagePlacement();
 
   return (
-    <div className="space-y-5 text-[15px] leading-[1.8] font-light">
+    <div className="article-content space-y-5 text-[15px] leading-[1.8] font-light">
       {sections.map((section, index) => {
         // Find if there's an image placement after this section
         const placement = imagePlacements.find(p => p.position === index);
