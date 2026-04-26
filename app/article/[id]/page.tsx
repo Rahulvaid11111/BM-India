@@ -5,6 +5,7 @@ import { categories } from "@/lib/articles";
 import { notFound } from "next/navigation";
 import { ArticleContent } from "@/components/ArticleContent";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { ArticleNavigation } from "@/components/ArticleNavigation";
 
 // Revalidate article pages every 60 seconds
 export const revalidate = 60;
@@ -116,6 +117,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
               </div>
             )}
           </div>
+
+          {/* Article Navigation */}
+          <ArticleNavigation currentArticle={article} allArticles={allArticles} />
         </article>
 
         {/* Sidebar */}
