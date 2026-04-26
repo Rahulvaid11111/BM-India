@@ -9,6 +9,8 @@ export const revalidate = 60;
 export default async function Home() {
   // Fetch all articles (merged from static + Supabase, sorted by newest first)
   const articles = await getArticles();
+  const trendingArticles = articles.filter(a => a.trending).slice(0, 5);
+  const popularArticles = articles.slice(0, 3); // Most recent as popular
   
   return (
     <div className="bg-white">
@@ -148,39 +150,41 @@ export default async function Home() {
           {/* Sidebar */}
           <aside className="lg:col-span-4">
             {/* Trending Section */}
-            <div className="mb-8 pb-8 border-b border-gray-200">
-              <h2 className="text-[14px] font-bold uppercase tracking-wider mb-6">Trending</h2>
-              <div className="space-y-6">
-                {articles.slice(15, 20).map((article, index) => (
-                  <article key={article.id} className="group flex gap-4">
-                    <div className="flex-shrink-0 w-20 h-20 relative overflow-hidden">
-                      <Image
-                        src={article.image}
-                        alt={article.title}
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-1 block">
-                        {article.category}
-                      </span>
-                      <Link href={`/article/${article.id}`} className="block">
-                        <h4 className="text-[14px] leading-[1.4] font-serif font-normal group-hover:opacity-70">
-                          {article.title}
-                        </h4>
-                      </Link>
-                    </div>
-                  </article>
-                ))}
+            {trendingArticles.length > 0 && (
+              <div className="mb-8 pb-8 border-b border-gray-200">
+                <h2 className="text-[14px] font-bold uppercase tracking-wider mb-6">Trending</h2>
+                <div className="space-y-6">
+                  {trendingArticles.map((article) => (
+                    <article key={article.id} className="group flex gap-4">
+                      <div className="flex-shrink-0 w-20 h-20 relative overflow-hidden">
+                        <Image
+                          src={article.image}
+                          alt={article.title}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-1 block">
+                          {article.category}
+                        </span>
+                        <Link href={`/article/${article.id}`} className="block">
+                          <h4 className="text-[14px] leading-[1.4] font-serif font-normal group-hover:opacity-70">
+                            {article.title}
+                          </h4>
+                        </Link>
+                      </div>
+                    </article>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Popular Stories */}
             <div>
               <h2 className="text-[14px] font-bold uppercase tracking-wider mb-6">Popular Stories</h2>
               <div className="space-y-6">
-                {articles.slice(20, 23).map((article) => (
+                {popularArticles.map((article) => (
                   <article key={article.id} className="group">
                     <Link href={`/article/${article.id}`} className="block">
                       <div className="relative aspect-[16/9] mb-3 overflow-hidden">
@@ -188,7 +192,7 @@ export default async function Home() {
                           src={article.image}
                           alt={article.title}
                           fill
-                          className="object-cover"
+                          className="object-contain"
                         />
                       </div>
                       <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">

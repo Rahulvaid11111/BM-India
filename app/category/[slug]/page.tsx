@@ -1,7 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getArticlesByCategory, categories } from "@/lib/articles";
+import { categories } from "@/lib/articles";
+import { getArticles } from "@/lib/get-articles";
 import { notFound } from "next/navigation";
+
+// Revalidate category pages every 60 seconds
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   return categories.map((category) => ({
@@ -19,7 +23,9 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
     notFound();
   }
 
-  const articles = getArticlesByCategory(category);
+  // Fetch all articles from Supabase and filter by category
+  const allArticles = await getArticles();
+  const articles = allArticles.filter(article => article.category === category);
 
   return (
     <div className="bg-white">
@@ -40,7 +46,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                       src={article.image}
                       alt={article.title}
                       fill
-                      className="object-cover"
+                      className="object-contain"
                     />
                   </div>
                   <h3 className="text-[16px] leading-[1.4] font-serif font-normal group-hover:opacity-70">

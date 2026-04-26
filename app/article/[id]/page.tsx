@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getArticleById, getArticles, getArticlesByCategory } from "@/lib/get-articles";
+import { categories } from "@/lib/articles";
 import { notFound } from "next/navigation";
 import { ArticleContent } from "@/components/ArticleContent";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
@@ -26,6 +27,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
     notFound();
   }
 
+  // Fetch all articles for sidebar
+  const allArticles = await getArticles();
+  const latestArticles = allArticles.slice(0, 5);
+  const trendingArticles = allArticles.filter(a => a.trending).slice(0, 5);
+  
   const categoryArticles = await getArticlesByCategory(article.category);
   const relatedArticles = categoryArticles
     .filter((a) => a.id !== article.id)
@@ -33,8 +39,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
 
   return (
     <div className="bg-white">
-      <div className="max-w-[1280px] mx-auto px-5">
-        <article className="max-w-[740px] mx-auto py-10">
+      <div className="max-w-[1280px] mx-auto px-5 py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Main Article Content */}
+          <article className="lg:col-span-8">
           {/* Category */}
           <div className="mb-4">
             <Link
