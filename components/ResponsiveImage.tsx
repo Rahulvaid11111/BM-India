@@ -13,6 +13,12 @@ interface ResponsiveImageProps {
 export function ResponsiveImage({ src, alt, priority = false, className = '' }: ResponsiveImageProps) {
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
 
+  // Validate src prop
+  if (!src || typeof src !== 'string' || src.trim() === '') {
+    console.error('ResponsiveImage: Invalid or missing src prop');
+    return null;
+  }
+
   const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
     const img = e.target as HTMLImageElement;
     const ratio = img.naturalWidth / img.naturalHeight;

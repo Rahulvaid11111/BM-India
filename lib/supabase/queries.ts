@@ -107,6 +107,19 @@ export async function slugExists(slug: string): Promise<boolean> {
 export function transformPostToArticle(post: DatabasePost): Article & { _timestamp?: number } {
   const timestamp = new Date(post.created_at).getTime();
   
+  // Fallback placeholder image if cover_image is missing or invalid
+  const fallbackImage = 'https://images.unsplash.com/photo-1557683316-973673baf926?w=1600&h=1067&fit=crop&q=90';
+  
+  // Validate cover image
+  const coverImage = post.cover_image && post.cover_image.trim() !== '' 
+    ? post.cover_image 
+    : fallbackImage;
+  
+  // Filter out invalid images from the images array
+  const validImages = (post.images || []).filter(img => 
+    img && typeof img === 'string' && img.trim() !== ''
+  );
+  
   return {
     id: post.slug,
     title: post.title,
@@ -118,11 +131,11 @@ export function transformPostToArticle(post: DatabasePost): Article & { _timesta
       month: 'long',
       day: 'numeric'
     }),
-    image: post.cover_image,
+    image: coverImage,
     featured: post.featured,
     trending: post.trending,
     content: post.content,
-    images: post.images || [],
+    images: validImages,
     _timestamp: timestamp, // Hidden property for sorting
   };
 }
