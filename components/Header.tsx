@@ -12,8 +12,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-black">
       <div className="max-w-[1280px] mx-auto px-5">
-        {/* Top utility bar */}
-        <div className="flex items-center justify-between py-2 border-b border-gray-300">
+        {/* Top utility bar - Desktop only */}
+        <div className="hidden md:flex items-center justify-between py-2 border-b border-gray-300">
           <div className="flex items-center gap-5 text-[11px] font-semibold uppercase tracking-wider">
             <Link href="#" className="hover:opacity-70">Subscribe</Link>
             <Link href="#" className="hover:opacity-70">Newsletter</Link>
@@ -58,30 +58,34 @@ export default function Header() {
           ))}
         </div>
 
-        {/* Mobile Logo - Centered */}
-        <div className="lg:hidden flex justify-center">
-          <Logo variant="header" />
-        </div>
-
-        {/* Mobile menu button */}
-        <div className="lg:hidden flex items-center justify-between pb-3">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2">
-            <Menu className="w-5 h-5" />
+        {/* Mobile Logo and Controls */}
+        <div className="lg:hidden flex items-center justify-between py-4">
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)} 
+            className="p-3 -ml-3 touch-manipulation"
+            aria-label="Toggle menu"
+          >
+            <Menu className="w-6 h-6" />
           </button>
-          <button className="p-2">
-            <Search className="w-5 h-5" />
+          
+          <div className="flex-1 flex justify-center">
+            <Logo variant="header" />
+          </div>
+          
+          <button className="p-3 -mr-3 touch-manipulation" aria-label="Search">
+            <Search className="w-6 h-6" />
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="lg:hidden border-t border-gray-300 py-4">
-            <nav className="flex flex-col gap-3">
+            <nav className="flex flex-col gap-1">
               {categories.map((category) => (
                 <Link
                   key={category}
                   href={`/category/${category.toLowerCase()}`}
-                  className="text-sm font-bold uppercase tracking-wider hover:opacity-70"
+                  className="text-base font-bold uppercase tracking-wider hover:opacity-70 py-3 px-2 touch-manipulation"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {category}
