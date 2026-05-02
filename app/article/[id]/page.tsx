@@ -79,10 +79,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
               {article.excerpt}
             </p>
 
-            {article.content ? (
+            {article.content && article.content.trim() !== '' ? (
               <ArticleContent content={article.content} images={article.images} />
             ) : (
               <div className="space-y-5 text-[15px] leading-[1.8] font-light">
+                <div className="bg-yellow-50 border border-yellow-200 p-4 rounded mb-6">
+                  <p className="text-sm text-yellow-800">
+                    <strong>Note:</strong> This article's full content is not available. 
+                    Please ensure the article content is properly saved in the database.
+                  </p>
+                </div>
                 <p>
                   In the ever-evolving landscape of modern {article.category.toLowerCase()}, 
                   we find ourselves at a fascinating crossroads where tradition meets innovation. 
