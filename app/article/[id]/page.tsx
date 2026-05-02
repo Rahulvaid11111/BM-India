@@ -46,9 +46,13 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
 export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  console.log('[ArticlePage] Fetching article with ID:', id);
+  
   const article = await getArticleById(id);
+  console.log('[ArticlePage] Article found:', article ? article.title : 'NOT FOUND');
 
   if (!article) {
+    console.error('[ArticlePage] Article not found, triggering 404 for ID:', id);
     notFound();
   }
 

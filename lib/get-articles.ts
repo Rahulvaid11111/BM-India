@@ -44,23 +44,29 @@ export async function getArticles(): Promise<Article[]> {
  */
 export async function getArticleById(id: string): Promise<Article | undefined> {
   try {
+    console.log('[getArticleById] Looking for article with ID:', id);
+    
     // First check static articles
     const staticArticle = staticArticles.find(article => article.id === id);
     if (staticArticle) {
+      console.log('[getArticleById] Found in static articles:', staticArticle.title);
       return staticArticle;
     }
     
     // Then check database by slug
+    console.log('[getArticleById] Not in static, checking database...');
     const { getPostBySlug, transformPostToArticle } = await import('./supabase/queries');
     const dbPost = await getPostBySlug(id);
     
     if (dbPost) {
+      console.log('[getArticleById] Found in database:', dbPost.title);
       return transformPostToArticle(dbPost);
     }
     
+    console.log('[getArticleById] Article not found in static or database');
     return undefined;
   } catch (error) {
-    console.error('Error fetching article by ID:', error);
+    console.error('[getArticleById] Error fetching article by ID:', id, error);
     // Fallback to static articles only
     return staticArticles.find(article => article.id === id);
   }
