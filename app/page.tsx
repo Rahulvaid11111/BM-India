@@ -53,7 +53,9 @@ export default async function Home() {
             {/* Fashion Section */}
             <div className="mb-12">
               <div className="flex items-center mb-6">
-                <h2 className="text-[24px] font-serif font-normal">Fashion</h2>
+                <Link href="/category/fashion" className="hover:opacity-70 transition-opacity">
+                  <h2 className="text-[24px] font-serif font-normal">Fashion</h2>
+                </Link>
                 <div className="flex-1 h-px bg-gray-300 ml-6"></div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -86,7 +88,9 @@ export default async function Home() {
             {/* Beauty Section */}
             <div className="mb-12">
               <div className="flex items-center mb-6">
-                <h2 className="text-[24px] font-serif font-normal">Beauty</h2>
+                <Link href="/category/beauty" className="hover:opacity-70 transition-opacity">
+                  <h2 className="text-[24px] font-serif font-normal">Beauty</h2>
+                </Link>
                 <div className="flex-1 h-px bg-gray-300 ml-6"></div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -119,7 +123,9 @@ export default async function Home() {
             {/* Culture Section */}
             <div className="mb-12">
               <div className="flex items-center mb-6">
-                <h2 className="text-[24px] font-serif font-normal">Culture</h2>
+                <Link href="/category/culture" className="hover:opacity-70 transition-opacity">
+                  <h2 className="text-[24px] font-serif font-normal">Culture</h2>
+                </Link>
                 <div className="flex-1 h-px bg-gray-300 ml-6"></div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -209,12 +215,287 @@ export default async function Home() {
           </aside>
         </div>
 
-        {/* Load More Section */}
-        <div className="text-center py-12 border-t border-gray-300 mt-12">
-          <button className="px-8 py-3 border border-black text-[11px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition-colors">
-            Load More
-          </button>
+        {/* Full-Width Featured Story */}
+        {articles[15] && (
+          <div className="my-16 py-12 border-y border-gray-300">
+            <article className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <Link href={`/article/${articles[15].id}`} className="group">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={articles[15].image}
+                    alt={articles[15].title}
+                    fill
+                    className="object-contain group-hover:opacity-90 transition-opacity"
+                  />
+                </div>
+              </Link>
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500 mb-3 block">
+                  {articles[15].category}
+                </span>
+                <Link href={`/article/${articles[15].id}`} className="group">
+                  <h2 className="text-[40px] leading-[1.1] font-serif font-normal mb-4 group-hover:opacity-70">
+                    {articles[15].title}
+                  </h2>
+                </Link>
+                <p className="text-[16px] leading-[1.7] text-gray-700 font-light mb-4">
+                  {articles[15].excerpt}
+                </p>
+                <div className="text-[13px] text-gray-600">
+                  By {articles[15].author} • {articles[15].date}
+                </div>
+              </div>
+            </article>
+          </div>
+        )}
+
+        {/* Editor's Picks Section */}
+        <div className="mb-16">
+          <div className="flex items-center justify-center mb-8">
+            <div className="flex-1 h-px bg-gray-300"></div>
+            <h2 className="text-[28px] font-serif font-normal px-8">Editor's Picks</h2>
+            <div className="flex-1 h-px bg-gray-300"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {articles.slice(16, 20).map((article) => (
+              <article key={article.id} className="group">
+                <Link href={`/article/${article.id}`} className="block">
+                  <div className="relative aspect-[3/4] mb-3 overflow-hidden">
+                    <Image
+                      src={article.image}
+                      alt={article.title}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
+                    {article.category}
+                  </span>
+                  <h3 className="text-[16px] leading-[1.3] font-serif font-normal group-hover:opacity-70">
+                    {article.title}
+                  </h3>
+                </Link>
+              </article>
+            ))}
+          </div>
         </div>
+
+        {/* Must Read Section */}
+        <div className="mb-16 bg-gray-50 -mx-5 px-5 py-12">
+          <div className="max-w-[1280px] mx-auto">
+            <h2 className="text-[28px] font-serif font-normal mb-8 text-center">Must Read</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {articles.slice(20, 23).map((article) => (
+                <article key={article.id} className="group bg-white">
+                  <Link href={`/article/${article.id}`} className="block">
+                    <div className="relative aspect-[16/9] mb-4 overflow-hidden">
+                      <Image
+                        src={article.image}
+                        alt={article.title}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
+                        {article.category}
+                      </span>
+                      <h3 className="text-[20px] leading-[1.3] font-serif font-normal mb-3 group-hover:opacity-70">
+                        {article.title}
+                      </h3>
+                      <p className="text-[14px] leading-[1.6] text-gray-600 line-clamp-3 font-light">
+                        {article.excerpt}
+                      </p>
+                    </div>
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Latest News Section */}
+        <div className="mb-16">
+          <div className="flex items-center mb-6">
+            <Link href="/category/culture" className="hover:opacity-70 transition-opacity">
+              <h2 className="text-[24px] font-serif font-normal">Latest News</h2>
+            </Link>
+            <div className="flex-1 h-px bg-gray-300 ml-6"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {articles.slice(23, 27).map((article) => (
+              <article key={article.id} className="group">
+                <Link href={`/article/${article.id}`} className="block">
+                  <div className="relative aspect-square mb-3 overflow-hidden">
+                    <Image
+                      src={article.image}
+                      alt={article.title}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
+                    {article.category}
+                  </span>
+                  <h3 className="text-[15px] leading-[1.3] font-serif font-normal group-hover:opacity-70">
+                    {article.title}
+                  </h3>
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        {/* Luxury Section */}
+        <div className="mb-16">
+          <div className="flex items-center mb-6">
+            <Link href="/category/luxury" className="hover:opacity-70 transition-opacity">
+              <h2 className="text-[24px] font-serif font-normal">Luxury</h2>
+            </Link>
+            <div className="flex-1 h-px bg-gray-300 ml-6"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {articles.slice(27, 29).map((article) => (
+              <article key={article.id} className="group">
+                <Link href={`/article/${article.id}`} className="block">
+                  <div className="relative aspect-[16/9] mb-4 overflow-hidden">
+                    <Image
+                      src={article.image}
+                      alt={article.title}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
+                    {article.category}
+                  </span>
+                  <h3 className="text-[26px] leading-[1.2] font-serif font-normal mb-3 group-hover:opacity-70">
+                    {article.title}
+                  </h3>
+                  <p className="text-[15px] leading-[1.7] text-gray-600 line-clamp-2 font-light">
+                    {article.excerpt}
+                  </p>
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        {/* Celebrity Section */}
+        <div className="mb-16">
+          <div className="flex items-center mb-6">
+            <Link href="/category/celebrity" className="hover:opacity-70 transition-opacity">
+              <h2 className="text-[24px] font-serif font-normal">Celebrity</h2>
+            </Link>
+            <div className="flex-1 h-px bg-gray-300 ml-6"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {articles.slice(29, 35).map((article) => (
+              <article key={article.id} className="group">
+                <Link href={`/article/${article.id}`} className="block">
+                  <div className="relative aspect-[3/4] mb-3 overflow-hidden">
+                    <Image
+                      src={article.image}
+                      alt={article.title}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
+                    {article.category}
+                  </span>
+                  <h3 className="text-[16px] leading-[1.3] font-serif font-normal group-hover:opacity-70">
+                    {article.title}
+                  </h3>
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        {/* Business & Shop Section */}
+        <div className="mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Business */}
+            <div>
+              <div className="flex items-center mb-6">
+                <Link href="/category/business" className="hover:opacity-70 transition-opacity">
+                  <h2 className="text-[20px] font-serif font-normal">Business</h2>
+                </Link>
+                <div className="flex-1 h-px bg-gray-300 ml-6"></div>
+              </div>
+              <div className="space-y-6">
+                {articles.slice(35, 38).map((article) => (
+                  <article key={article.id} className="group flex gap-4">
+                    <div className="flex-shrink-0 w-32 h-32 relative overflow-hidden">
+                      <Link href={`/article/${article.id}`}>
+                        <Image
+                          src={article.image}
+                          alt={article.title}
+                          fill
+                          className="object-contain"
+                        />
+                      </Link>
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
+                        {article.category}
+                      </span>
+                      <Link href={`/article/${article.id}`}>
+                        <h3 className="text-[16px] leading-[1.3] font-serif font-normal mb-2 group-hover:opacity-70">
+                          {article.title}
+                        </h3>
+                      </Link>
+                      <p className="text-[13px] leading-[1.6] text-gray-600 line-clamp-2 font-light">
+                        {article.excerpt}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            {/* Shop */}
+            <div>
+              <div className="flex items-center mb-6">
+                <Link href="/category/shop" className="hover:opacity-70 transition-opacity">
+                  <h2 className="text-[20px] font-serif font-normal">Shop</h2>
+                </Link>
+                <div className="flex-1 h-px bg-gray-300 ml-6"></div>
+              </div>
+              <div className="space-y-6">
+                {articles.slice(38, 41).map((article) => (
+                  <article key={article.id} className="group flex gap-4">
+                    <div className="flex-shrink-0 w-32 h-32 relative overflow-hidden">
+                      <Link href={`/article/${article.id}`}>
+                        <Image
+                          src={article.image}
+                          alt={article.title}
+                          fill
+                          className="object-contain"
+                        />
+                      </Link>
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
+                        {article.category}
+                      </span>
+                      <Link href={`/article/${article.id}`}>
+                        <h3 className="text-[16px] leading-[1.3] font-serif font-normal mb-2 group-hover:opacity-70">
+                          {article.title}
+                        </h3>
+                      </Link>
+                      <p className="text-[13px] leading-[1.6] text-gray-600 line-clamp-2 font-light">
+                        {article.excerpt}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );
