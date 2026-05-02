@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { getArticles } from "@/lib/get-articles";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { OrganizationSchema } from "@/components/OrganizationSchema";
+import { WebsiteSchema } from "@/components/WebsiteSchema";
 
 // Revalidate this page every 60 seconds
 export const revalidate = 60;
@@ -13,8 +15,11 @@ export default async function Home() {
   const popularArticles = articles.slice(0, 3); // Most recent as popular
   
   return (
-    <div className="bg-white">
-      <div className="max-w-[1280px] mx-auto px-5 py-8">
+    <>
+      <OrganizationSchema />
+      <WebsiteSchema />
+      <div className="bg-white">
+        <div className="max-w-[1280px] mx-auto px-5 py-8">
         {/* Hero Section - Large Featured Article */}
         {articles[0] && (
           <article className="mb-12">
@@ -492,7 +497,9 @@ export default async function Home() {
                   </article>
                 ))}
               </div>
-            </div>
+           >
+    </div>
+    </   </div>
           </div>
         </div>
 

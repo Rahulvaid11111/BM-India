@@ -6,6 +6,8 @@ import { notFound } from "next/navigation";
 import { ArticleContent } from "@/components/ArticleContent";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { ArticleNavigation } from "@/components/ArticleNavigation";
+import { ArticleSchema } from "@/components/ArticleSchema";
+import type { Metadata } from "next";
 
 // Revalidate article pages every 60 seconds
 export const revalidate = 60;
@@ -18,6 +20,28 @@ export async function generateStaticParams() {
   return articles.map((article) => ({
     id: article.id,
   }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const article = await getArticleById(id);
+  if (!article) return { title: 'Article Not Found' };
+  return {
+    title: article.title,
+    description: article.excerpt,
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      type: 'article',
+      images: [{ url: article.image, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.excerpt,
+      images: [article.image],
+    },
+  };
 }
 
 export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
@@ -39,7 +63,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
     .slice(0, 4);
 
   return (
-    <div className="bg-white">
+    <>
+      <ArticleSchema article={article} />
+      <div className="bg-white">
       <div className="max-w-[1280px] mx-auto px-5 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Main Article Content */}
@@ -235,9 +261,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
                 </article>
               ))}
             </div>
-          </section>
-        )}
+        </section>
+      )}
       </div>
     </div>
+    </>
   );
 }
