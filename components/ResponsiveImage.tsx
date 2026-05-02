@@ -29,7 +29,6 @@ export function ResponsiveImage({ src, alt, priority = false, className = '' }: 
   const displayRatio = aspectRatio || 3/2;
   
   // Determine if image is landscape, portrait, or square
-  const isLandscape = displayRatio > 1.3;
   const isPortrait = displayRatio < 0.8;
   const isSquare = displayRatio >= 0.8 && displayRatio <= 1.3;
 

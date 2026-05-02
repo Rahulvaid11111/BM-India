@@ -37,7 +37,7 @@ export default function LatestIssuePage() {
             </h2>
             <p className="text-[17px] leading-[1.7] text-gray-700 mb-8">
               Our Spring 2026 issue celebrates the return of refined sophistication. From exclusive 
-              interviews with fashion's most influential designers to insider access at the world's 
+              interviews with fashion&apos;s most influential designers to insider access at the world&apos;s 
               premier cultural events, this edition captures the essence of modern luxury.
             </p>
 

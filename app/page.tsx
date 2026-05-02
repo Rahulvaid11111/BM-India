@@ -497,13 +497,11 @@ export default async function Home() {
                   </article>
                 ))}
               </div>
-           >
-    </div>
-    </   </div>
+            </div>
           </div>
         </div>
-
       </div>
     </div>
+    </>
   );
 }

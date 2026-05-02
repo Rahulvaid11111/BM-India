@@ -43,8 +43,8 @@ export async function getPostBySlug(slug: string): Promise<DatabasePost | null> 
     }
 
     return data;
-  } catch (error) {
-    console.error('Error in getPostBySlug:', error);
+  } catch (err) {
+    console.error('Error in getPostBySlug:', err);
     return null;
   }
 }

@@ -115,7 +115,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
               <div className="space-y-5 text-[15px] leading-[1.8] font-light">
                 <div className="bg-yellow-50 border border-yellow-200 p-4 rounded mb-6">
                   <p className="text-sm text-yellow-800">
-                    <strong>Note:</strong> This article's full content is not available. 
+                    <strong>Note:</strong> This article&apos;s full content is not available. 
                     Please ensure the article content is properly saved in the database.
                   </p>
                 </div>
@@ -127,7 +127,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
                 </p>
 
                 <p>
-                  The attention to detail and craftsmanship evident in today's offerings speaks 
+                  The attention to detail and craftsmanship evident in today&apos;s offerings speaks 
                   to a broader cultural shift toward appreciation of quality and authenticity. 
                   Industry leaders and emerging talents are pushing boundaries while respecting 
                   the foundations that have defined excellence for generations.
@@ -145,9 +145,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
                 </p>
 
                 <p>
-                  As we look toward the future, it's clear that the landscape will continue to 
+                  As we look toward the future, it&apos;s clear that the landscape will continue to 
                   evolve in unexpected ways. The key players in this space are not just responding 
-                  to trends—they're actively shaping them, creating a dialogue between creator and 
+                  to trends—they&apos;re actively shaping them, creating a dialogue between creator and 
                   consumer that enriches the entire experience.
                 </p>
               </div>

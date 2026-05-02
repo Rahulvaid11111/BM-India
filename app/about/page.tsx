@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function AboutPage() {
   return (
     <div className="bg-white">
@@ -7,8 +9,8 @@ export default function AboutPage() {
           
           <div className="space-y-6 text-[17px] leading-[1.7]">
             <p>
-              BEST Magazine is Canada's premier destination for luxury lifestyle, fashion, beauty, and culture. 
-              Since our inception, we've been dedicated to bringing our readers the finest in editorial content, 
+              BEST Magazine is Canada&apos;s premier destination for luxury lifestyle, fashion, beauty, and culture. 
+              Since our inception, we&apos;ve been dedicated to bringing our readers the finest in editorial content, 
               showcasing the very best in Canadian and international style.
             </p>
 
@@ -35,7 +37,7 @@ export default function AboutPage() {
             
             <p>
               For editorial inquiries, partnerships, or general questions, please visit our{" "}
-              <a href="/contact" className="underline hover:opacity-70">contact page</a>.
+              <Link href="/contact" className="underline hover:opacity-70">contact page</Link>.
             </p>
           </div>
         </div>

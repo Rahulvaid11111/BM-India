@@ -21,7 +21,7 @@ function validateApiKey(request: NextRequest): boolean {
 }
 
 // Validate required fields
-function validatePostData(data: any): { valid: boolean; errors: string[] } {
+function validatePostData(data: Record<string, unknown>): { valid: boolean; errors: string[] } {
   const errors: string[] = [];
   const requiredFields = ['title', 'content', 'excerpt', 'cover_image', 'category'];
 
@@ -126,8 +126,8 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
 
-  } catch (error) {
-    console.error('Unexpected error in create-post API:', error);
+  } catch (_error) {
+    console.error('Unexpected error in create-post API:', _error);
     return NextResponse.json(
       { success: false, error: 'Internal server error' },
       { status: 500 }
