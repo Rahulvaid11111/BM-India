@@ -15,13 +15,6 @@
   --color-border-tertiary: #e8e8e8;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-jost);
-  --font-serif: var(--font-eb-garamond);
-}
-
 body {
   background: var(--background);
   color: var(--foreground);

@@ -52,6 +52,7 @@ export function ResponsiveImage({ src, alt, priority = false, className = '' }: 
         src={src}
         alt={alt}
         fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
         className="object-contain"
         priority={priority}
         onLoad={handleImageLoad}

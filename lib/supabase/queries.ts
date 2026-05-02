@@ -110,15 +110,15 @@ export function transformPostToArticle(post: DatabasePost): Article & { _timesta
   // Fallback placeholder image if cover_image is missing or invalid
   const fallbackImage = 'https://images.unsplash.com/photo-1557683316-973673baf926?w=1600&h=1067&fit=crop&q=90';
   
-  // Validate cover image
+  // Validate cover image and trim whitespace
   const coverImage = post.cover_image && post.cover_image.trim() !== '' 
-    ? post.cover_image 
+    ? post.cover_image.trim() 
     : fallbackImage;
   
-  // Filter out invalid images from the images array
-  const validImages = (post.images || []).filter(img => 
-    img && typeof img === 'string' && img.trim() !== ''
-  );
+  // Filter out invalid images and trim whitespace from all URLs
+  const validImages = (post.images || [])
+    .filter(img => img && typeof img === 'string' && img.trim() !== '')
+    .map(img => img.trim());
   
   return {
     id: post.slug,

@@ -41,6 +41,7 @@ export function ImageGallery({ images, variant = 'slider' }: ImageGalleryProps) 
                 src={image}
                 alt={`Gallery image ${index + 1}`}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-contain"
                 onLoad={(e) => {
                   const img = e.target as HTMLImageElement;
@@ -73,8 +74,9 @@ export function ImageGallery({ images, variant = 'slider' }: ImageGalleryProps) 
             >
               <Image
                 src={image}
-                alt={`Image ${index + 1}`}
+                alt={`Inline image ${index + 1}`}
                 fill
+                sizes="(max-width: 768px) 100vw, 800px"
                 className="object-contain"
                 onLoad={(e) => {
                   const img = e.target as HTMLImageElement;
@@ -116,6 +118,7 @@ export function ImageGallery({ images, variant = 'slider' }: ImageGalleryProps) 
           src={currentImage}
           alt={`Slide ${currentIndex + 1} of ${uniqueImages.length}`}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
           className="object-contain bg-gray-50"
           priority={currentIndex === 0}
           onLoad={(e) => {
