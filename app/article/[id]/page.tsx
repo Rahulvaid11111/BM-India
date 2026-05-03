@@ -9,9 +9,25 @@ import { ArticleNavigation } from "@/components/ArticleNavigation";
 import { ArticleSchema } from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
-// Force dynamic rendering to prevent 404 caching for new articles
-export const dynamic = 'force-dynamic';
+// Use Node.js runtime for dynamic data fetching
+export const runtime = 'nodejs';
+// Revalidate immediately (always fetch fresh data)
 export const revalidate = 0;
+// Allow dynamic params for articles not in generateStaticParams
+export const dynamicParams = true;
+
+// Generate static params for existing articles at build time
+export async function generateStaticParams() {
+  try {
+    const articles = await getArticles();
+    return articles.map((article) => ({
+      id: article.id,
+    }));
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
+  }
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
