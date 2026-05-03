@@ -9,18 +9,9 @@ import { ArticleNavigation } from "@/components/ArticleNavigation";
 import { ArticleSchema } from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
-// Revalidate article pages every 60 seconds
-export const revalidate = 60;
-
-// Generate static params but allow dynamic rendering for new articles
-export const dynamicParams = true;
-
-export async function generateStaticParams() {
-  const articles = await getArticles();
-  return articles.map((article) => ({
-    id: article.id,
-  }));
-}
+// Force dynamic rendering to prevent 404 caching for new articles
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
