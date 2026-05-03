@@ -9,7 +9,7 @@ export default function MagazinePage() {
         <div className="max-w-[740px] mb-12">
           <p className="text-[17px] leading-[1.7] text-gray-700 mb-6">
             Experience BEST Magazine in print. Our quarterly publication features in-depth stories, 
-            stunning photography, and exclusive content you won't find anywhere else.
+            stunning photography, and exclusive content you won&apos;t find anywhere else.
           </p>
         </div>
 
@@ -20,7 +20,7 @@ export default function MagazinePage() {
           >
             <h2 className="text-[28px] font-serif font-normal mb-3">Latest Issue</h2>
             <p className="text-[15px]">
-              Discover our newest edition featuring the season's most compelling stories.
+              Discover our newest edition featuring the season&apos;s most compelling stories.
             </p>
           </Link>
 

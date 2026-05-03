@@ -126,8 +126,8 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
 
-  } catch (_error) {
-    console.error('Unexpected error in create-post API:', _error);
+  } catch (err) {
+    console.error('Unexpected error in create-post API:', err);
     return NextResponse.json(
       { success: false, error: 'Internal server error' },
       { status: 500 }

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getArticles } from "@/lib/get-articles";
-import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { OrganizationSchema } from "@/components/OrganizationSchema";
 import { WebsiteSchema } from "@/components/WebsiteSchema";
 
@@ -258,7 +257,7 @@ export default async function Home() {
         <div className="mb-16">
           <div className="flex items-center justify-center mb-8">
             <div className="flex-1 h-px bg-gray-300"></div>
-            <h2 className="text-[28px] font-serif font-normal px-8">Editor's Picks</h2>
+            <h2 className="text-[28px] font-serif font-normal px-8">Editor&apos;s Picks</h2>
             <div className="flex-1 h-px bg-gray-300"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">

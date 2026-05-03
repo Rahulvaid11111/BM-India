@@ -9,7 +9,7 @@ export default function PrivacyPolicyPage() {
             <p className="text-sm text-gray-600">Last updated: April 19, 2026</p>
 
             <p>
-              BEST Magazine ("we," "our," or "us") is committed to protecting your privacy. 
+              BEST Magazine (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. 
               This Privacy Policy explains how we collect, use, disclose, and safeguard your 
               information when you visit our website.
             </p>

@@ -96,7 +96,7 @@ export async function slugExists(slug: string): Promise<boolean> {
       .single();
 
     return !error && data !== null;
-  } catch (error) {
+  } catch {
     return false;
   }
 }

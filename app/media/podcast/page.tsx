@@ -52,7 +52,7 @@ export default function PodcastPage() {
         <h1 className="text-[42px] font-serif font-normal italic mb-8">Podcast</h1>
         
         <p className="text-[17px] leading-[1.7] text-gray-700 max-w-[740px] mb-12">
-          Listen to BEST Magazine's exclusive podcast series featuring conversations with the most 
+          Listen to BEST Magazine&apos;s exclusive podcast series featuring conversations with the most 
           influential voices in fashion, beauty, culture, and luxury lifestyle.
         </p>
 

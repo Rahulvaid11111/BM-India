@@ -57,7 +57,7 @@ export default function LatestIssuePage() {
               </li>
               <li className="flex gap-3">
                 <span className="text-gray-400">•</span>
-                <span>Travel: The World's Most Luxurious New Hotels</span>
+                <span>Travel: The World&apos;s Most Luxurious New Hotels</span>
               </li>
               <li className="flex gap-3">
                 <span className="text-gray-400">•</span>

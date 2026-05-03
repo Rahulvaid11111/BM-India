@@ -30,7 +30,7 @@ export async function getArticles(): Promise<Article[]> {
     });
     
     // Remove timestamp property before returning
-    return allArticles.map(({ _timestamp, ...article }: any) => article);
+    return allArticles.map(({ _timestamp: _, ...article }: any) => article);
   } catch (error) {
     console.error('Error fetching articles:', error);
     // Fallback to static articles if database fails
