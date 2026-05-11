@@ -4,6 +4,7 @@ import { getArticleById, getArticles, getArticlesByCategory } from "@/lib/get-ar
 import { categories } from "@/lib/articles";
 import { notFound } from "next/navigation";
 import { ArticleContent } from "@/components/ArticleContent";
+import { NumberedImageList } from "@/components/NumberedImageList";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { ArticleNavigation } from "@/components/ArticleNavigation";
 import { ArticleSchema } from "@/components/ArticleSchema";
@@ -73,6 +74,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
     .filter((a) => a.id !== article.id)
     .slice(0, 4);
 
+  const shouldShowNumberedGallery = (article.images?.length || 0) >= 5;
+  const contentImages = shouldShowNumberedGallery ? [] : article.images;
+
   return (
     <>
       <ArticleSchema article={article} />
@@ -117,7 +121,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
             </p>
 
             {article.content && article.content.trim() !== '' ? (
-              <ArticleContent content={article.content} images={article.images} />
+              <ArticleContent content={article.content} images={contentImages} />
             ) : (
               <div className="space-y-5 text-[15px] leading-[1.8] font-light">
                 <div className="bg-yellow-50 border border-yellow-200 p-4 rounded mb-6">
@@ -160,6 +164,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
               </div>
             )}
           </div>
+
+          {shouldShowNumberedGallery && article.images && (
+            <section className="mt-16">
+              <div className="flex items-center mb-8">
+                <h2 className="text-[26px] font-serif font-normal">The Edit: Visual Index</h2>
+                <div className="ml-6 flex-1 h-px bg-gray-300" />
+              </div>
+              <NumberedImageList images={article.images} />
+            </section>
+          )}
 
           {/* Article Navigation */}
           <ArticleNavigation currentArticle={article} allArticles={allArticles} />
