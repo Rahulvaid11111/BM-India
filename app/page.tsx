@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getArticles } from "@/lib/get-articles";
+import { categoryToSlug } from "@/lib/articles";
 import { OrganizationSchema } from "@/components/OrganizationSchema";
 import { WebsiteSchema } from "@/components/WebsiteSchema";
 
@@ -547,11 +548,13 @@ export default async function Home() {
                   ))}
               </div>
             </div>
-
             {/* Best 10 */}
             <div>
               <div className="flex items-center mb-6">
-                <Link href="/category/best 10" className="hover:opacity-70 transition-opacity">
+                <Link
+                  href={`/category/${categoryToSlug("Best 10")}`}
+                  className="hover:opacity-70 transition-opacity"
+                >
                   <h2 className="text-[20px] font-serif font-normal">Best 10</h2>
                 </Link>
                 <div className="flex-1 h-px bg-gray-300 ml-6"></div>

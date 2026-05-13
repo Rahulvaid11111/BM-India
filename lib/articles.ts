@@ -54,3 +54,22 @@ export function getArticlesByCategory(category: string): Article[] {
 export function getArticleById(id: string): Article | undefined {
   return articles.find(article => article.id === id);
 }
+
+const SLUGIFY_REGEX = /[^a-z0-9]+/g;
+
+export function categoryToSlug(category: string): string {
+  return category
+    .toLowerCase()
+    .replace(SLUGIFY_REGEX, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export function findCategoryBySlug(slug: string): string | undefined {
+  const normalizedSlug = slug.trim().toLowerCase();
+  return categories.find((category) => categoryToSlug(category) === normalizedSlug);
+}
+
+export const categorySlugEntries = categories.map((category) => ({
+  name: category,
+  slug: categoryToSlug(category),
+}));

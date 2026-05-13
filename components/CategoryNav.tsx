@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { categories } from "@/lib/articles";
+import { categories, categoryToSlug } from "@/lib/articles";
 
 interface CategoryNavProps {
   currentCategory?: string;
@@ -22,7 +22,7 @@ export default function CategoryNav({ currentCategory }: CategoryNavProps) {
         {categories.map((category) => (
           <Link
             key={category}
-            href={`/category/${category.toLowerCase()}`}
+            href={`/category/${categoryToSlug(category)}`}
             className={`text-xs font-medium uppercase tracking-widest px-3 py-1.5 transition-colors ${
               currentCategory === category
                 ? "text-black border-b-2 border-black"

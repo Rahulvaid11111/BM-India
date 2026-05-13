@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getArticleById, getArticles, getArticlesByCategory } from "@/lib/get-articles";
-import { categories } from "@/lib/articles";
+import { categories, categoryToSlug } from "@/lib/articles";
 import { notFound } from "next/navigation";
 import { ArticleContent } from "@/components/ArticleContent";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
@@ -84,7 +84,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
           {/* Category */}
           <div className="mb-4">
             <Link
-              href={`/category/${article.category.toLowerCase()}`}
+              href={`/category/${categoryToSlug(article.category)}`}
               className="text-[11px] font-bold uppercase tracking-wider hover:opacity-70"
             >
               {article.category}
@@ -238,7 +238,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
               {categories.map((cat) => (
                 <Link
                   key={cat}
-                  href={`/category/${cat.toLowerCase()}`}
+                  href={`/category/${categoryToSlug(cat)}`}
                   className="block text-[14px] font-normal hover:opacity-70 py-1"
                 >
                   {cat}

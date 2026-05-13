@@ -16,16 +16,6 @@ export function SubscribeDialog({ isOpen, onClose }: SubscribeDialogProps) {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    if (isOpen) {
-      setName("");
-      setEmail("");
-      setIsSubmitting(false);
-      setStatus("idle");
-      setMessage("");
-    }
-  }, [isOpen]);
-
-  useEffect(() => {
     if (!isOpen) return;
 
     const handler = (event: KeyboardEvent) => {

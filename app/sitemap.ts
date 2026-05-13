@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getArticles } from '@/lib/get-articles';
-import { categories } from '@/lib/articles';
+import { categories, categoryToSlug } from '@/lib/articles';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bestmagazine.ca';
@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Category pages
   const categoryPages: MetadataRoute.Sitemap = categories.map((category) => ({
-    url: `${baseUrl}/category/${category.toLowerCase()}`,
+    url: `${baseUrl}/category/${categoryToSlug(category)}`,
     lastModified: new Date(),
     changeFrequency: 'daily',
     priority: 0.9,

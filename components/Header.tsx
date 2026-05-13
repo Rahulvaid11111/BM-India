@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Menu, Search } from "lucide-react";
 import { useState } from "react";
-import { categories } from "@/lib/articles";
+import { categories, categoryToSlug } from "@/lib/articles";
 import Logo from "./Logo";
 import { SearchDialog } from "./SearchDialog";
 import { SubscribeDialog } from "./SubscribeDialog";
@@ -12,6 +12,18 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSubscribeOpen, setIsSubscribeOpen] = useState(false);
+  const [searchSession, setSearchSession] = useState(0);
+  const [subscribeSession, setSubscribeSession] = useState(0);
+
+  const openSearch = () => {
+    setSearchSession((prev) => prev + 1);
+    setIsSearchOpen(true);
+  };
+
+  const openSubscribe = () => {
+    setSubscribeSession((prev) => prev + 1);
+    setIsSubscribeOpen(true);
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-black">
@@ -19,11 +31,11 @@ export default function Header() {
         {/* Top utility bar - Desktop only */}
         <div className="hidden md:flex items-center justify-between py-2 border-b border-gray-300">
           <div className="flex items-center gap-5 text-[11px] font-semibold uppercase tracking-wider">
-            <button onClick={() => setIsSubscribeOpen(true)} className="hover:opacity-70">Subscribe</button>
-            <button onClick={() => setIsSubscribeOpen(true)} className="hover:opacity-70">Newsletter</button>
+            <button onClick={openSubscribe} className="hover:opacity-70">Subscribe</button>
+            <button onClick={openSubscribe} className="hover:opacity-70">Newsletter</button>
           </div>
           <div className="flex items-center gap-4">
-            <button className="hover:opacity-70" onClick={() => setIsSearchOpen(true)} aria-label="Open search">
+            <button className="hover:opacity-70" onClick={openSearch} aria-label="Open search">
               <Search className="w-4 h-4" />
             </button>
             <Link href="#" className="text-[11px] font-semibold uppercase tracking-wider hover:opacity-70">
@@ -40,7 +52,7 @@ export default function Header() {
             {categories.map((category) => (
               <Link
                 key={category}
-                href={`/category/${category.toLowerCase()}`}
+                href={`/category/${categoryToSlug(category)}`}
                 className="text-[11px] font-bold uppercase tracking-[0.18em] hover:opacity-70"
               >
                 {category}
@@ -66,7 +78,7 @@ export default function Header() {
           <button
             className="p-3 -mr-3 touch-manipulation"
             aria-label="Search"
-            onClick={() => setIsSearchOpen(true)}
+            onClick={openSearch}
           >
             <Search className="w-6 h-6" />
           </button>
@@ -80,7 +92,7 @@ export default function Header() {
                 className="text-left text-base font-bold uppercase tracking-wider hover:opacity-70 py-3 px-2 touch-manipulation"
                 onClick={() => {
                   setIsMenuOpen(false);
-                  setIsSubscribeOpen(true);
+                  openSubscribe();
                 }}
               >
                 Subscribe
@@ -89,7 +101,7 @@ export default function Header() {
                 className="text-left text-base font-bold uppercase tracking-wider hover:opacity-70 py-3 px-2 touch-manipulation"
                 onClick={() => {
                   setIsMenuOpen(false);
-                  setIsSubscribeOpen(true);
+                  openSubscribe();
                 }}
               >
                 Newsletter
@@ -97,7 +109,7 @@ export default function Header() {
               {categories.map((category) => (
                 <Link
                   key={category}
-                  href={`/category/${category.toLowerCase()}`}
+                  href={`/category/${categoryToSlug(category)}`}
                   className="text-base font-bold uppercase tracking-wider hover:opacity-70 py-3 px-2 touch-manipulation"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -108,8 +120,8 @@ export default function Header() {
           </div>
         )}
       </div>
-      <SearchDialog isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-      <SubscribeDialog isOpen={isSubscribeOpen} onClose={() => setIsSubscribeOpen(false)} />
+      <SearchDialog key={searchSession} isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      <SubscribeDialog key={subscribeSession} isOpen={isSubscribeOpen} onClose={() => setIsSubscribeOpen(false)} />
     </header>
   );
 }

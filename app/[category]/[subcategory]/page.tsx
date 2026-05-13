@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { categories, subcategories, articles } from "@/lib/articles";
+import { categories, subcategories, articles, categoryToSlug } from "@/lib/articles";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -9,8 +9,8 @@ export async function generateStaticParams() {
   Object.entries(subcategories).forEach(([category, subs]) => {
     subs.forEach((sub) => {
       params.push({
-        category: category.toLowerCase(),
-        subcategory: sub.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "")
+        category: categoryToSlug(category),
+        subcategory: categoryToSlug(sub)
       });
     });
   });
@@ -25,7 +25,7 @@ export default async function SubcategoryPage({
 }) {
   const { category: categorySlug, subcategory: subcategorySlug } = await params;
   const category = categories.find(
-    (cat) => cat.toLowerCase() === categorySlug.toLowerCase()
+    (cat) => categoryToSlug(cat) === categorySlug
   );
 
   if (!category || !subcategories[category]) {
@@ -33,7 +33,7 @@ export default async function SubcategoryPage({
   }
 
   const subcategoryName = subcategories[category].find(
-    (sub) => sub.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "") === subcategorySlug
+    (sub) => categoryToSlug(sub) === subcategorySlug
   );
 
   if (!subcategoryName) {
@@ -50,7 +50,7 @@ export default async function SubcategoryPage({
         <div className="py-4 text-[11px] font-semibold uppercase tracking-wider">
           <Link href="/" className="hover:opacity-70">Home</Link>
           <span className="mx-2 text-gray-400">/</span>
-          <Link href={`/${category.toLowerCase()}`} className="hover:opacity-70">{category}</Link>
+          <Link href={`/category/${categoryToSlug(category)}`} className="hover:opacity-70">{category}</Link>
           <span className="mx-2 text-gray-400">/</span>
           <span>{subcategoryName}</span>
         </div>

@@ -26,8 +26,6 @@ export function SearchDialog({ isOpen, onClose }: SearchDialogProps) {
 
   useEffect(() => {
     if (!isOpen) {
-      setQuery("");
-      setResults([]);
       return;
     }
 

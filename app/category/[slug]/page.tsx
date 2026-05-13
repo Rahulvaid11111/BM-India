@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { categories } from "@/lib/articles";
+import { categorySlugEntries, findCategoryBySlug } from "@/lib/articles";
 import { getArticles } from "@/lib/get-articles";
 import { notFound } from "next/navigation";
 
@@ -8,16 +8,12 @@ import { notFound } from "next/navigation";
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  return categories.map((category) => ({
-    slug: category.toLowerCase(),
-  }));
+  return categorySlugEntries.map(({ slug }) => ({ slug }));
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const category = categories.find(
-    (cat) => cat.toLowerCase() === slug.toLowerCase()
-  );
+  const category = findCategoryBySlug(slug);
 
   if (!category) {
     notFound();
