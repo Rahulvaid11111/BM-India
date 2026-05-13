@@ -1,4 +1,4 @@
-import { supabase, DatabasePost } from './client';
+import { supabase, DatabasePost, NewsletterSubscriber } from './client';
 import { Article } from '../articles';
 
 /**
@@ -136,6 +136,41 @@ export async function searchPosts(query: string): Promise<DatabasePost[]> {
   } catch (error) {
     console.error('Error in searchPosts:', error);
     return [];
+  }
+}
+
+/**
+ * Add a newsletter subscriber (idempotent by email)
+ */
+export async function addNewsletterSubscriber(name: string, email: string): Promise<{ data: NewsletterSubscriber | null; error: any }> {
+  const trimmedEmail = email.trim().toLowerCase();
+
+  if (!trimmedEmail) {
+    return { data: null, error: new Error('Email is required') };
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from('newsletter_subscribers')
+      .upsert(
+        {
+          name: name.trim(),
+          email: trimmedEmail,
+        },
+        {
+          onConflict: 'email',
+        }
+      )
+      .select()
+      .single();
+
+    if (error) {
+      return { data: null, error };
+    }
+
+    return { data: data as NewsletterSubscriber, error: null };
+  } catch (error) {
+    return { data: null, error };
   }
 }
 

@@ -6,10 +6,12 @@ import { useState } from "react";
 import { categories } from "@/lib/articles";
 import Logo from "./Logo";
 import { SearchDialog } from "./SearchDialog";
+import { SubscribeDialog } from "./SubscribeDialog";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isSubscribeOpen, setIsSubscribeOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-black">
@@ -17,8 +19,8 @@ export default function Header() {
         {/* Top utility bar - Desktop only */}
         <div className="hidden md:flex items-center justify-between py-2 border-b border-gray-300">
           <div className="flex items-center gap-5 text-[11px] font-semibold uppercase tracking-wider">
-            <Link href="#" className="hover:opacity-70">Subscribe</Link>
-            <Link href="#" className="hover:opacity-70">Newsletter</Link>
+            <button onClick={() => setIsSubscribeOpen(true)} className="hover:opacity-70">Subscribe</button>
+            <button onClick={() => setIsSubscribeOpen(true)} className="hover:opacity-70">Newsletter</button>
           </div>
           <div className="flex items-center gap-4">
             <button className="hover:opacity-70" onClick={() => setIsSearchOpen(true)} aria-label="Open search">
@@ -74,6 +76,24 @@ export default function Header() {
         {isMenuOpen && (
           <div className="lg:hidden border-t border-gray-300 py-4">
             <nav className="flex flex-col gap-1">
+              <button
+                className="text-left text-base font-bold uppercase tracking-wider hover:opacity-70 py-3 px-2 touch-manipulation"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  setIsSubscribeOpen(true);
+                }}
+              >
+                Subscribe
+              </button>
+              <button
+                className="text-left text-base font-bold uppercase tracking-wider hover:opacity-70 py-3 px-2 touch-manipulation"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  setIsSubscribeOpen(true);
+                }}
+              >
+                Newsletter
+              </button>
               {categories.map((category) => (
                 <Link
                   key={category}
@@ -89,6 +109,7 @@ export default function Header() {
         )}
       </div>
       <SearchDialog isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      <SubscribeDialog isOpen={isSubscribeOpen} onClose={() => setIsSubscribeOpen(false)} />
     </header>
   );
 }

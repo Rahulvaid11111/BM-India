@@ -9,6 +9,7 @@ const createMockClient = (): any => ({
     select: () => ({ data: [], error: null }),
     insert: () => ({ data: null, error: new Error('Supabase not configured') }),
     update: () => ({ data: null, error: new Error('Supabase not configured') }),
+    upsert: () => ({ data: null, error: new Error('Supabase not configured') }),
     eq: function() { return this; },
     single: () => ({ data: null, error: new Error('Supabase not configured') }),
     order: function() { return this; },
@@ -37,4 +38,11 @@ export interface DatabasePost {
   seo_keywords?: string[];
   created_at: string;
   updated_at: string;
+}
+
+export interface NewsletterSubscriber {
+  id: string;
+  name: string;
+  email: string;
+  created_at: string;
 }
