@@ -5,9 +5,11 @@ import { Menu, Search } from "lucide-react";
 import { useState } from "react";
 import { categories } from "@/lib/articles";
 import Logo from "./Logo";
+import { SearchDialog } from "./SearchDialog";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-black">
@@ -19,7 +21,7 @@ export default function Header() {
             <Link href="#" className="hover:opacity-70">Newsletter</Link>
           </div>
           <div className="flex items-center gap-4">
-            <button className="hover:opacity-70">
+            <button className="hover:opacity-70" onClick={() => setIsSearchOpen(true)} aria-label="Open search">
               <Search className="w-4 h-4" />
             </button>
             <Link href="#" className="text-[11px] font-semibold uppercase tracking-wider hover:opacity-70">
@@ -72,7 +74,11 @@ export default function Header() {
             <Logo variant="header" />
           </div>
           
-          <button className="p-3 -mr-3 touch-manipulation" aria-label="Search">
+          <button
+            className="p-3 -mr-3 touch-manipulation"
+            aria-label="Search"
+            onClick={() => setIsSearchOpen(true)}
+          >
             <Search className="w-6 h-6" />
           </button>
         </div>
@@ -95,6 +101,7 @@ export default function Header() {
           </div>
         )}
       </div>
+      <SearchDialog isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </header>
   );
 }

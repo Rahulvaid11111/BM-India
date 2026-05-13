@@ -101,6 +101,44 @@ export async function slugExists(slug: string): Promise<boolean> {
   }
 }
 
+function escapeForILike(value: string): string {
+  return value.replace(/[%_]/g, (match) => `\\${match}`);
+}
+
+/**
+ * Search published posts by title, excerpt, or content
+ */
+export async function searchPosts(query: string): Promise<DatabasePost[]> {
+  const trimmed = query.trim();
+  if (!trimmed) return [];
+
+  const escapedQuery = escapeForILike(trimmed);
+  const likePattern = `%${escapedQuery}%`;
+
+  try {
+    const { data, error } = await supabase
+      .from('posts')
+      .select('*')
+      .eq('published', true)
+      .or([
+        `title.ilike.${likePattern}`,
+        `excerpt.ilike.${likePattern}`,
+        `content.ilike.${likePattern}`
+      ].join(','))
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error searching posts:', error);
+      return [];
+    }
+
+    return data || [];
+  } catch (error) {
+    console.error('Error in searchPosts:', error);
+    return [];
+  }
+}
+
 /**
  * Transform DatabasePost to Article interface for frontend compatibility
  */
