@@ -417,84 +417,176 @@ export default async function Home() {
           </div>
         </div>
 
-        {/* Business & Shop Section */}
+        {/* Watches, Fragrances, Automobile, Best 10 Section */}
         <div className="mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Business */}
+            {/* Watches */}
             <div>
               <div className="flex items-center mb-6">
-                <Link href="/category/business" className="hover:opacity-70 transition-opacity">
-                  <h2 className="text-[20px] font-serif font-normal">Business</h2>
+                <Link href="/category/watches" className="hover:opacity-70 transition-opacity">
+                  <h2 className="text-[20px] font-serif font-normal">Watches</h2>
                 </Link>
                 <div className="flex-1 h-px bg-gray-300 ml-6"></div>
               </div>
               <div className="space-y-6">
-                {articles.slice(35, 38).map((article) => (
-                  <article key={article.id} className="group flex gap-4">
-                    <div className="flex-shrink-0 w-32 h-32 relative overflow-hidden">
-                      <Link href={`/article/${article.id}`}>
-                        <Image
-                          src={article.image}
-                          alt={article.title}
-                          fill
-                          className="object-contain"
-                        />
-                      </Link>
-                    </div>
-                    <div className="flex-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
-                        {article.category}
-                      </span>
-                      <Link href={`/article/${article.id}`}>
-                        <h3 className="text-[16px] leading-[1.3] font-serif font-normal mb-2 group-hover:opacity-70">
-                          {article.title}
-                        </h3>
-                      </Link>
-                      <p className="text-[13px] leading-[1.6] text-gray-600 line-clamp-2 font-light">
-                        {article.excerpt}
-                      </p>
-                    </div>
-                  </article>
-                ))}
+                {articles
+                  .filter((article) => article.category === "Watches")
+                  .slice(0, 3)
+                  .map((article) => (
+                    <article key={article.id} className="group flex gap-4">
+                      <div className="flex-shrink-0 w-32 h-32 relative overflow-hidden">
+                        <Link href={`/article/${article.id}`}>
+                          <Image
+                            src={article.image}
+                            alt={article.title}
+                            fill
+                            className="object-contain"
+                          />
+                        </Link>
+                      </div>
+                      <div className="flex-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
+                          {article.category}
+                        </span>
+                        <Link href={`/article/${article.id}`}>
+                          <h3 className="text-[16px] leading-[1.3] font-serif font-normal mb-2 group-hover:opacity-70">
+                            {article.title}
+                          </h3>
+                        </Link>
+                        <p className="text-[13px] leading-[1.6] text-gray-600 line-clamp-2 font-light">
+                          {article.excerpt}
+                        </p>
+                      </div>
+                    </article>
+                  ))}
               </div>
             </div>
 
-            {/* Shop */}
+            {/* Fragrances */}
             <div>
               <div className="flex items-center mb-6">
-                <Link href="/category/shop" className="hover:opacity-70 transition-opacity">
-                  <h2 className="text-[20px] font-serif font-normal">Shop</h2>
+                <Link href="/category/fragrances" className="hover:opacity-70 transition-opacity">
+                  <h2 className="text-[20px] font-serif font-normal">Fragrances</h2>
                 </Link>
                 <div className="flex-1 h-px bg-gray-300 ml-6"></div>
               </div>
               <div className="space-y-6">
-                {articles.slice(38, 41).map((article) => (
-                  <article key={article.id} className="group flex gap-4">
-                    <div className="flex-shrink-0 w-32 h-32 relative overflow-hidden">
-                      <Link href={`/article/${article.id}`}>
-                        <Image
-                          src={article.image}
-                          alt={article.title}
-                          fill
-                          className="object-contain"
-                        />
-                      </Link>
-                    </div>
-                    <div className="flex-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
-                        {article.category}
-                      </span>
-                      <Link href={`/article/${article.id}`}>
-                        <h3 className="text-[16px] leading-[1.3] font-serif font-normal mb-2 group-hover:opacity-70">
-                          {article.title}
-                        </h3>
-                      </Link>
-                      <p className="text-[13px] leading-[1.6] text-gray-600 line-clamp-2 font-light">
-                        {article.excerpt}
-                      </p>
-                    </div>
-                  </article>
-                ))}
+                {articles
+                  .filter((article) => article.category === "Fragrances")
+                  .slice(0, 3)
+                  .map((article) => (
+                    <article key={article.id} className="group flex gap-4">
+                      <div className="flex-shrink-0 w-32 h-32 relative overflow-hidden">
+                        <Link href={`/article/${article.id}`}>
+                          <Image
+                            src={article.image}
+                            alt={article.title}
+                            fill
+                            className="object-contain"
+                          />
+                        </Link>
+                      </div>
+                      <div className="flex-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
+                          {article.category}
+                        </span>
+                        <Link href={`/article/${article.id}`}>
+                          <h3 className="text-[16px] leading-[1.3] font-serif font-normal mb-2 group-hover:opacity-70">
+                            {article.title}
+                          </h3>
+                        </Link>
+                        <p className="text-[13px] leading-[1.6] text-gray-600 line-clamp-2 font-light">
+                          {article.excerpt}
+                        </p>
+                      </div>
+                    </article>
+                  ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Automobile */}
+            <div>
+              <div className="flex items-center mb-6">
+                <Link href="/category/automobile" className="hover:opacity-70 transition-opacity">
+                  <h2 className="text-[20px] font-serif font-normal">Automobile</h2>
+                </Link>
+                <div className="flex-1 h-px bg-gray-300 ml-6"></div>
+              </div>
+              <div className="space-y-6">
+                {articles
+                  .filter((article) => article.category === "Automobile")
+                  .slice(0, 3)
+                  .map((article) => (
+                    <article key={article.id} className="group flex gap-4">
+                      <div className="flex-shrink-0 w-32 h-32 relative overflow-hidden">
+                        <Link href={`/article/${article.id}`}>
+                          <Image
+                            src={article.image}
+                            alt={article.title}
+                            fill
+                            className="object-contain"
+                          />
+                        </Link>
+                      </div>
+                      <div className="flex-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
+                          {article.category}
+                        </span>
+                        <Link href={`/article/${article.id}`}>
+                          <h3 className="text-[16px] leading-[1.3] font-serif font-normal mb-2 group-hover:opacity-70">
+                            {article.title}
+                          </h3>
+                        </Link>
+                        <p className="text-[13px] leading-[1.6] text-gray-600 line-clamp-2 font-light">
+                          {article.excerpt}
+                        </p>
+                      </div>
+                    </article>
+                  ))}
+              </div>
+            </div>
+
+            {/* Best 10 */}
+            <div>
+              <div className="flex items-center mb-6">
+                <Link href="/category/best 10" className="hover:opacity-70 transition-opacity">
+                  <h2 className="text-[20px] font-serif font-normal">Best 10</h2>
+                </Link>
+                <div className="flex-1 h-px bg-gray-300 ml-6"></div>
+              </div>
+              <div className="space-y-6">
+                {articles
+                  .filter((article) => article.category === "Best 10")
+                  .slice(0, 3)
+                  .map((article) => (
+                    <article key={article.id} className="group flex gap-4">
+                      <div className="flex-shrink-0 w-32 h-32 relative overflow-hidden">
+                        <Link href={`/article/${article.id}`}>
+                          <Image
+                            src={article.image}
+                            alt={article.title}
+                            fill
+                            className="object-contain"
+                          />
+                        </Link>
+                      </div>
+                      <div className="flex-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2 block">
+                          {article.category}
+                        </span>
+                        <Link href={`/article/${article.id}`}>
+                          <h3 className="text-[16px] leading-[1.3] font-serif font-normal mb-2 group-hover:opacity-70">
+                            {article.title}
+                          </h3>
+                        </Link>
+                        <p className="text-[13px] leading-[1.6] text-gray-600 line-clamp-2 font-light">
+                          {article.excerpt}
+                        </p>
+                      </div>
+                    </article>
+                  ))}
               </div>
             </div>
           </div>

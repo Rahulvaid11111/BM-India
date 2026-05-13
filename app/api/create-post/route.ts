@@ -32,7 +32,7 @@ function validatePostData(data: Record<string, unknown>): { valid: boolean; erro
   }
 
   // Validate category
-  const validCategories = ['Fashion', 'Beauty', 'Luxury', 'Culture', 'Celebrity', 'Business', 'Shop', 'Local'];
+  const validCategories = ['Fashion', 'Beauty', 'Luxury', 'Culture', 'Celebrity', 'Watches', 'Fragrances', 'Automobile', 'Best 10'];
   if (data.category && typeof data.category === 'string' && !validCategories.includes(data.category)) {
     errors.push(`Invalid category. Must be one of: ${validCategories.join(', ')}`);
   }

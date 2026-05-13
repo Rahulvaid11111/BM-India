@@ -18,9 +18,10 @@ export const categories = [
   "Luxury",
   "Culture",
   "Celebrity",
-  "Business",
-  "Shop",
-  "Local"
+  "Watches",
+  "Fragrances",
+  "Automobile",
+  "Best 10"
 ];
 
 export const subcategories: Record<string, string[]> = {
@@ -29,9 +30,10 @@ export const subcategories: Record<string, string[]> = {
   Luxury: ["Watches", "Cars", "Hotels", "Experiences"],
   Culture: ["Film & TV", "Music", "Art", "Books", "Opinion"],
   Celebrity: ["Interviews", "Red Carpet", "Style"],
-  Business: ["Industry News", "Brand Spotlights", "Marketing & PR", "Creator Economy"],
-  Shop: ["Editor Picks", "Best Of", "Gift Guides"],
-  Local: ["Toronto", "Vancouver", "Montreal"]
+  Watches: ["Dive", "Dress", "Complications", "Collector"],
+  Fragrances: ["New Launches", "Classics", "Unisex", "Niche"],
+  Automobile: ["Supercars", "Concept", "Vintage", "Electric"],
+  "Best 10": ["Fashion", "Beauty", "Luxury", "Lifestyle"]
 };
 
 // Static articles removed - now showing only articles from Supabase database
