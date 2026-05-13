@@ -30,34 +30,21 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Logo with Navigation on Sides - Vogue Style */}
-        <div className="hidden lg:flex items-center justify-center gap-4 py-6">
-          {/* Left Navigation */}
-          {categories.slice(0, 4).map((category) => (
-            <Link
-              key={category}
-              href={`/category/${category.toLowerCase()}`}
-              className="text-[11px] font-bold uppercase tracking-[0.08em] hover:opacity-70"
-            >
-              {category}
-            </Link>
-          ))}
+        {/* Desktop Logo & Categories */}
+        <div className="hidden lg:flex flex-col items-center py-6">
+          <Logo variant="header" />
 
-          {/* Centered Logo */}
-          <div className="flex-shrink-0">
-            <Logo variant="header" />
-          </div>
-
-          {/* Right Navigation */}
-          {categories.slice(4).map((category) => (
-            <Link
-              key={category}
-              href={`/category/${category.toLowerCase()}`}
-              className="text-[11px] font-bold uppercase tracking-[0.08em] hover:opacity-70"
-            >
-              {category}
-            </Link>
-          ))}
+          <nav className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+            {categories.map((category) => (
+              <Link
+                key={category}
+                href={`/category/${category.toLowerCase()}`}
+                className="text-[11px] font-bold uppercase tracking-[0.18em] hover:opacity-70"
+              >
+                {category}
+              </Link>
+            ))}
+          </nav>
         </div>
 
         {/* Mobile Logo and Controls */}
