@@ -1,24 +1,13 @@
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.SUPABASE_URL || '';
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || '';
+// Required env vars (set in .env.local and deployment environment):
+// NEXT_PUBLIC_SUPABASE_URL=https://mxqcbeaywbzaotdfdurk.supabase.co
+// SUPABASE_SERVICE_ROLE_KEY=<service role key>
 
-// Create a mock client for build time when credentials aren't available
-const createMockClient = (): any => ({
-  from: () => ({
-    select: () => ({ data: [], error: null }),
-    insert: () => ({ data: null, error: new Error('Supabase not configured') }),
-    update: () => ({ data: null, error: new Error('Supabase not configured') }),
-    upsert: () => ({ data: null, error: new Error('Supabase not configured') }),
-    eq: function() { return this; },
-    single: () => ({ data: null, error: new Error('Supabase not configured') }),
-    order: function() { return this; },
-  })
-});
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
-export const supabase: SupabaseClient = (supabaseUrl && supabaseAnonKey)
-  ? createClient(supabaseUrl, supabaseAnonKey)
-  : createMockClient() as SupabaseClient;
+export const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
 
 export interface DatabasePost {
   id: string;
