@@ -1,24 +1,17 @@
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.SUPABASE_URL || '';
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || '';
+// These env vars must be set in `.env.local` (and in Vercel/deployment
+// environment settings) for the Supabase client to initialize.
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-// Create a mock client for build time when credentials aren't available
-const createMockClient = (): any => ({
-  from: () => ({
-    select: () => ({ data: [], error: null }),
-    insert: () => ({ data: null, error: new Error('Supabase not configured') }),
-    update: () => ({ data: null, error: new Error('Supabase not configured') }),
-    upsert: () => ({ data: null, error: new Error('Supabase not configured') }),
-    eq: function() { return this; },
-    single: () => ({ data: null, error: new Error('Supabase not configured') }),
-    order: function() { return this; },
-  })
-});
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error(
+    'Missing Supabase environment variables: NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY must be set.'
+  );
+}
 
-export const supabase: SupabaseClient = (supabaseUrl && supabaseAnonKey)
-  ? createClient(supabaseUrl, supabaseAnonKey)
-  : createMockClient() as SupabaseClient;
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export interface DatabasePost {
   id: string;
