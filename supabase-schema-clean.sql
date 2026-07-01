@@ -1,14 +1,8 @@
 -- Clean schema for BEST Magazine posts table
 -- This version safely handles existing objects
 
--- Drop existing policies if they exist
-DROP POLICY IF EXISTS "Public can view published posts" ON posts;
-DROP POLICY IF EXISTS "Authenticated users can insert posts" ON posts;
-DROP POLICY IF EXISTS "Authenticated users can update posts" ON posts;
-
 -- Drop existing trigger and function if they exist
-DROP TRIGGER IF EXISTS update_posts_updated_at ON posts;
-DROP FUNCTION IF EXISTS update_updated_at_column();
+DROP FUNCTION IF EXISTS update_updated_at_column() CASCADE;
 
 -- Create posts table (will skip if exists)
 CREATE TABLE IF NOT EXISTS posts (
@@ -38,6 +32,14 @@ CREATE INDEX IF NOT EXISTS idx_posts_published ON posts(published);
 CREATE INDEX IF NOT EXISTS idx_posts_created_at ON posts(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_posts_featured ON posts(featured) WHERE featured = true;
 CREATE INDEX IF NOT EXISTS idx_posts_trending ON posts(trending) WHERE trending = true;
+
+-- Drop existing policies if they exist
+DROP POLICY IF EXISTS "Public can view published posts" ON posts;
+DROP POLICY IF EXISTS "Authenticated users can insert posts" ON posts;
+DROP POLICY IF EXISTS "Authenticated users can update posts" ON posts;
+
+-- Drop existing trigger if it exists
+DROP TRIGGER IF EXISTS update_posts_updated_at ON posts;
 
 -- Enable Row Level Security
 ALTER TABLE posts ENABLE ROW LEVEL SECURITY;
