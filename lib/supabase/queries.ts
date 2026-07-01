@@ -52,7 +52,7 @@ export async function getPostBySlug(slug: string): Promise<DatabasePost | null> 
 /**
  * Create a new post in Supabase
  */
-export async function createPost(postData: Omit<DatabasePost, 'id' | 'created_at' | 'updated_at'>): Promise<{ data: DatabasePost | null; error: unknown }> {
+export async function createPost(postData: Omit<DatabasePost, 'id' | 'created_at' | 'updated_at'>): Promise<{ data: DatabasePost | null; error: any }> {
   try {
     const { data, error } = await supabase
       .from('posts')
@@ -69,7 +69,7 @@ export async function createPost(postData: Omit<DatabasePost, 'id' | 'created_at
 /**
  * Update an existing post
  */
-export async function updatePost(id: string, postData: Partial<DatabasePost>): Promise<{ data: DatabasePost | null; error: unknown }> {
+export async function updatePost(id: string, postData: Partial<DatabasePost>): Promise<{ data: DatabasePost | null; error: any }> {
   try {
     const { data, error } = await supabase
       .from('posts')
@@ -142,7 +142,7 @@ export async function searchPosts(query: string): Promise<DatabasePost[]> {
 /**
  * Add a newsletter subscriber (idempotent by email)
  */
-export async function addNewsletterSubscriber(name: string, email: string): Promise<{ data: NewsletterSubscriber | null; error: unknown }> {
+export async function addNewsletterSubscriber(name: string, email: string): Promise<{ data: NewsletterSubscriber | null; error: any }> {
   const trimmedEmail = email.trim().toLowerCase();
 
   if (!trimmedEmail) {

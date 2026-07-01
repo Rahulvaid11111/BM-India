@@ -8,7 +8,7 @@ export default function WorkWithUsPage() {
         
         <div className="max-w-[740px] mb-12">
           <p className="text-[17px] leading-[1.7] text-gray-700 mb-6">
-            Partner with BEST Magazine to reach Canada&apos;s most influential luxury audience. 
+            Partner with BEST Magazine to reach Canada's most influential luxury audience. 
             We offer a range of opportunities for brands looking to connect with our sophisticated readership.
           </p>
         </div>

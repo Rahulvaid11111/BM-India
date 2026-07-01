@@ -11,7 +11,7 @@ const BUCKET_NAME = 'article-images';
 export async function uploadImage(
   file: Buffer | Blob,
   fileName: string
-): Promise<{ url: string | null; error: unknown }> {
+): Promise<{ url: string | null; error: any }> {
   try {
     // Sanitize filename
     const sanitizedName = sanitizeFileName(fileName);
@@ -50,9 +50,9 @@ export async function uploadImage(
  */
 export async function uploadMultipleImages(
   files: Array<{ file: Buffer | Blob; name: string }>
-): Promise<{ urls: string[]; errors: unknown[] }> {
+): Promise<{ urls: string[]; errors: any[] }> {
   const urls: string[] = [];
-  const errors: unknown[] = [];
+  const errors: any[] = [];
 
   for (const { file, name } of files) {
     const { url, error } = await uploadImage(file, name);
@@ -71,7 +71,7 @@ export async function uploadMultipleImages(
  * Delete an image from storage
  * @param filePath - Path to the file in storage
  */
-export async function deleteImage(filePath: string): Promise<{ success: boolean; error: unknown }> {
+export async function deleteImage(filePath: string): Promise<{ success: boolean; error: any }> {
   try {
     const { error } = await supabase.storage
       .from(BUCKET_NAME)

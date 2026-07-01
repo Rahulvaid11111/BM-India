@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { categoryToSlug } from "@/lib/articles";
 
 export default function Footer() {
   return (

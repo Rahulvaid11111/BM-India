@@ -3,7 +3,7 @@ import { getArticles } from '@/lib/get-articles';
 import { categories, categoryToSlug } from '@/lib/articles';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bestmagazine.in';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bestmagazine.ca';
   
   // Get all articles for dynamic URLs
   const articles = await getArticles();

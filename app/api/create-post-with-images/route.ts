@@ -133,7 +133,7 @@ export async function POST(request: NextRequest) {
     if (error) {
       console.error('Database error:', error);
       return NextResponse.json(
-        { success: false, error: 'Failed to create post', details: error instanceof Error ? error.message : String(error) },
+        { success: false, error: 'Failed to create post', details: error.message },
         { status: 500 }
       );
     }

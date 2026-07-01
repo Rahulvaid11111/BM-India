@@ -64,7 +64,7 @@ export default function PartnershipsPage() {
             <ul className="space-y-3">
               <li className="flex gap-3">
                 <span className="text-gray-400">•</span>
-                <span>Access to Canada&apos;s most influential luxury consumers</span>
+                <span>Access to Canada's most influential luxury consumers</span>
               </li>
               <li className="flex gap-3">
                 <span className="text-gray-400">•</span>
@@ -87,7 +87,7 @@ export default function PartnershipsPage() {
             <div className="border-t border-gray-300 pt-8 mt-12">
               <h2 className="text-[28px] font-serif font-normal mb-4">Start a Conversation</h2>
               <p className="mb-6">
-                Let&apos;s explore how a partnership with BEST Magazine can elevate your brand and 
+                Let's explore how a partnership with BEST Magazine can elevate your brand and 
                 create lasting impact.
               </p>
               <a 

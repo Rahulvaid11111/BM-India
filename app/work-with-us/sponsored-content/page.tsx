@@ -18,7 +18,7 @@ export default function SponsoredContentPage() {
           
           <div className="space-y-6 text-[17px] leading-[1.7]">
             <p>
-              BEST Magazine&apos;s sponsored content solutions allow brands to tell their stories through 
+              BEST Magazine's sponsored content solutions allow brands to tell their stories through 
               our editorial lens. Our team of experienced writers, photographers, and editors work 
               with you to create compelling narratives that resonate with our sophisticated audience.
             </p>
@@ -29,7 +29,7 @@ export default function SponsoredContentPage() {
               <div>
                 <h3 className="text-[20px] font-bold uppercase tracking-wider mb-2">Editorial Features</h3>
                 <p className="text-gray-700">
-                  Long-form articles that showcase your brand&apos;s story, values, and products within 
+                  Long-form articles that showcase your brand's story, values, and products within 
                   the context of luxury lifestyle. Seamlessly integrated with our editorial content.
                 </p>
               </div>
@@ -85,7 +85,7 @@ export default function SponsoredContentPage() {
             </ol>
 
             <div className="border-t border-gray-300 pt-8 mt-12">
-              <h2 className="text-[28px] font-serif font-normal mb-4">Let&apos;s Create Together</h2>
+              <h2 className="text-[28px] font-serif font-normal mb-4">Let's Create Together</h2>
               <p className="mb-6">
                 Contact our content studio to discuss how we can bring your brand story to life.
               </p>
