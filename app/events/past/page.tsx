@@ -12,10 +12,10 @@ const pastEvents = [
   },
   {
     id: "past-2",
-    title: "Canadian Fashion Week Showcase",
+    title: "India Fashion Week Showcase",
     date: "October 15, 2025",
-    location: "Yorkville Village, Toronto",
-    description: "Exclusive preview of Spring/Summer 2026 collections from Canada's top designers.",
+    location: "Jio World Convention Centre, Mumbai",
+    description: "Exclusive preview of Spring/Summer 2026 collections from India's top designers.",
     image: "https://images.unsplash.com/photo-1558769132-cb1aea1c8f2f?w=1600&h=1067&fit=crop&q=90"
   },
   {

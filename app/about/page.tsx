@@ -9,9 +9,9 @@ export default function AboutPage() {
           
           <div className="space-y-6 text-[17px] leading-[1.7]">
             <p>
-              BEST Magazine is Canada&apos;s premier destination for luxury lifestyle, fashion, beauty, and culture. 
+              BEST Magazine is India&apos;s premier destination for luxury lifestyle, fashion, beauty, and culture. 
               Since our inception, we&apos;ve been dedicated to bringing our readers the finest in editorial content, 
-              showcasing the very best in Canadian and international style.
+              showcasing the very best in Indian and international style.
             </p>
 
             <p>
@@ -28,8 +28,8 @@ export default function AboutPage() {
             </p>
 
             <p>
-              Based in Canada with a global perspective, BEST Magazine bridges the gap between local talent 
-              and international trends, celebrating the unique voice of Canadian luxury while maintaining 
+              Based in India with a global perspective, BEST Magazine bridges the gap between local talent 
+              and international trends, celebrating the unique voice of Indian luxury while maintaining 
               our connection to the global fashion and culture community.
             </p>
 

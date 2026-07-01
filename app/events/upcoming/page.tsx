@@ -16,7 +16,7 @@ const upcomingEvents = [
     title: "Fashion Forward: Designer Panel Discussion",
     date: "May 22, 2026",
     location: "Design Exchange, Toronto",
-    description: "Leading Canadian designers discuss the future of sustainable luxury fashion.",
+    description: "Leading Indian designers discuss the future of sustainable luxury fashion.",
     image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&h=1067&fit=crop&q=90",
     category: "Panel"
   },

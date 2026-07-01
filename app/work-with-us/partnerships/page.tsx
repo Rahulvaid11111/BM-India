@@ -64,7 +64,7 @@ export default function PartnershipsPage() {
             <ul className="space-y-3">
               <li className="flex gap-3">
                 <span className="text-gray-400">•</span>
-                <span>Access to Canada's most influential luxury consumers</span>
+                <span>Access to India's most influential luxury consumers</span>
               </li>
               <li className="flex gap-3">
                 <span className="text-gray-400">•</span>

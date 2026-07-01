@@ -50,8 +50,8 @@ export default function ContactPage() {
               <h2 className="text-[20px] font-bold uppercase tracking-wider mb-4">Office</h2>
               <p className="text-[17px] leading-[1.7] text-gray-700">
                 BEST Magazine<br />
-                Toronto, Ontario<br />
-                Canada
+                Mumbai, Maharashtra<br />
+                India
               </p>
             </div>
           </div>
