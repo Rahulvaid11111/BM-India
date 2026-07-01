@@ -9,29 +9,36 @@ const isValidUrl = (url: string) => {
 
 // Create a mock client for build time when credentials aren't available
 const createMockClient = () => {
-  const chainable: Record<string, unknown> = {
-    select: () => Promise.resolve({ data: [], error: null }),
-    insert: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
-    update: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
-    upsert: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
-    delete: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
-    single: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
-    eq: function() { return this; },
-    order: function() { return this; },
-    limit: function() { return this; },
-    or: function() { return this; },
-  };
+  const noopError = new Error('Supabase not configured');
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const builder: Record<string, any> = {};
+  const chain = () => builder;
+  builder.select = chain;
+  builder.insert = chain;
+  builder.update = chain;
+  builder.upsert = chain;
+  builder.delete = chain;
+  builder.eq = chain;
+  builder.neq = chain;
+  builder.order = chain;
+  builder.limit = chain;
+  builder.or = chain;
+  builder.filter = chain;
+  builder.match = chain;
+  builder.single = () => Promise.resolve({ data: null, error: noopError });
+  builder.then = (resolve: (v: { data: unknown[]; error: null }) => unknown) =>
+    Promise.resolve({ data: [], error: null }).then(resolve);
   return {
-    from: () => chainable,
+    from: () => builder,
     storage: {
       from: () => ({
-        upload: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
+        upload: () => Promise.resolve({ data: null, error: noopError }),
         getPublicUrl: () => ({ data: { publicUrl: '' } }),
-        remove: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
-        list: () => Promise.resolve({ data: [], error: new Error('Supabase not configured') }),
+        remove: () => Promise.resolve({ data: null, error: noopError }),
+        list: () => Promise.resolve({ data: [], error: noopError }),
       }),
     },
-    rpc: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
+    rpc: () => Promise.resolve({ data: null, error: noopError }),
   };
 };
 
