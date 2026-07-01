@@ -3,20 +3,39 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || '';
 
-// Create a mock client for build time when credentials aren't available
-const createMockClient = (): any => ({
-  from: () => ({
-    select: () => ({ data: [], error: null }),
-    insert: () => ({ data: null, error: new Error('Supabase not configured') }),
-    update: () => ({ data: null, error: new Error('Supabase not configured') }),
-    upsert: () => ({ data: null, error: new Error('Supabase not configured') }),
-    eq: function() { return this; },
-    single: () => ({ data: null, error: new Error('Supabase not configured') }),
-    order: function() { return this; },
-  })
-});
+const isValidUrl = (url: string) => {
+  try { new URL(url); return true; } catch { return false; }
+};
 
-export const supabase: SupabaseClient = (supabaseUrl && supabaseAnonKey)
+// Create a mock client for build time when credentials aren't available
+const createMockClient = (): any => {
+  const chainable: any = {
+    select: () => Promise.resolve({ data: [], error: null }),
+    insert: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
+    update: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
+    upsert: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
+    delete: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
+    single: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
+    eq: function() { return this; },
+    order: function() { return this; },
+    limit: function() { return this; },
+    or: function() { return this; },
+  };
+  return {
+    from: () => chainable,
+    storage: {
+      from: () => ({
+        upload: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
+        getPublicUrl: () => ({ data: { publicUrl: '' } }),
+        remove: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
+        list: () => Promise.resolve({ data: [], error: new Error('Supabase not configured') }),
+      }),
+    },
+    rpc: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
+  };
+};
+
+export const supabase: SupabaseClient = (supabaseUrl && supabaseAnonKey && isValidUrl(supabaseUrl))
   ? createClient(supabaseUrl, supabaseAnonKey)
   : createMockClient() as SupabaseClient;
 
