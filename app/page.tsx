@@ -5,8 +5,8 @@ import { categoryToSlug } from "@/lib/articles";
 import { OrganizationSchema } from "@/components/OrganizationSchema";
 import { WebsiteSchema } from "@/components/WebsiteSchema";
 
-// Revalidate this page every 60 seconds
-export const revalidate = 60;
+// Always fetch fresh data from Supabase
+export const revalidate = 0;
 
 export default async function Home() {
   // Fetch all articles (merged from static + Supabase, sorted by newest first)
