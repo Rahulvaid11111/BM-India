@@ -8,8 +8,8 @@ const isValidUrl = (url: string) => {
 };
 
 // Create a mock client for build time when credentials aren't available
-const createMockClient = (): any => {
-  const chainable: any = {
+const createMockClient = () => {
+  const chainable: Record<string, unknown> = {
     select: () => Promise.resolve({ data: [], error: null }),
     insert: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
     update: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),

@@ -66,10 +66,10 @@ export function SubscribeDialog({ isOpen, onClose }: SubscribeDialogProps) {
 
       setStatus("success");
       setMessage("You’re on the list. Look out for the next edition.");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Failed to subscribe", error);
       setStatus("error");
-      setMessage(error?.message || "Something went wrong. Please try again.");
+      setMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

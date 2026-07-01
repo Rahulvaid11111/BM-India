@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -13,10 +13,12 @@ export function ImageGallery({ images, variant = 'slider' }: ImageGalleryProps) 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imageDimensions, setImageDimensions] = useState<Record<number, { width: number; height: number }>>({});
 
-  // Reset index when images change
-  useEffect(() => {
+  const imagesKey = images.join(',');
+  const [prevKey, setPrevKey] = useState(imagesKey);
+  if (prevKey !== imagesKey) {
+    setPrevKey(imagesKey);
     setCurrentIndex(0);
-  }, [images]);
+  }
 
   if (!images || images.length === 0) return null;
 

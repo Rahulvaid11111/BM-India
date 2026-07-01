@@ -18,7 +18,7 @@ export default function AdvertisePage() {
           
           <div className="space-y-6 text-[17px] leading-[1.7] mb-12">
             <p>
-              BEST Magazine reaches Canada's most affluent and influential audience—discerning readers 
+              BEST Magazine reaches Canada&apos;s most affluent and influential audience—discerning readers 
               who value quality, sophistication, and luxury. Our print and digital platforms offer 
               unparalleled opportunities to connect with this premium demographic.
             </p>
@@ -76,7 +76,7 @@ export default function AdvertisePage() {
               <h2 className="text-[28px] font-serif font-normal mb-4">Get Started</h2>
               <p className="mb-6">
                 Contact our advertising team to discuss how BEST Magazine can help you reach 
-                Canada's luxury audience.
+                Canada&apos;s luxury audience.
               </p>
               <a 
                 href="mailto:advertising@bestmagazine.ca"

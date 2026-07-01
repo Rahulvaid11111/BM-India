@@ -23,14 +23,15 @@ export async function getArticles(): Promise<Article[]> {
     });
     
     // Merge and sort all articles by timestamp (newest first)
-    const allArticles = [...dbArticles, ...staticWithTimestamp].sort((a, b) => {
-      const timeA = (a as any)._timestamp || 0;
-      const timeB = (b as any)._timestamp || 0;
+    type ArticleWithTimestamp = Article & { _timestamp?: number };
+    const allArticles = [...dbArticles, ...staticWithTimestamp].sort((a: ArticleWithTimestamp, b: ArticleWithTimestamp) => {
+      const timeA = a._timestamp || 0;
+      const timeB = b._timestamp || 0;
       return timeB - timeA; // Descending order (newest first)
     });
     
     // Remove timestamp property before returning
-    return allArticles.map(({ _timestamp: _, ...article }: any) => article);
+    return allArticles.map(({ _timestamp: _, ...article }: ArticleWithTimestamp) => article);
   } catch (error) {
     console.error('Error fetching articles:', error);
     // Fallback to static articles if database fails

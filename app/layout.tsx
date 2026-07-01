@@ -20,7 +20,7 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://bestmagazine.ca'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://bestmagazine.in'),
   title: {
     default: "BEST — The Magazine",
     template: "%s | BEST Magazine"
