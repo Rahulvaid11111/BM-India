@@ -10,6 +10,11 @@ export async function GET(request: NextRequest) {
     const articles = await getArticles();
     return NextResponse.json({
       total: articles.length,
+      env: {
+        hasUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+        urlPrefix: process.env.NEXT_PUBLIC_SUPABASE_URL?.substring(0, 30) || 'missing',
+        hasKey: !!process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
+      },
       articles: articles.slice(0, 10).map(a => ({
         id: a.id,
         title: a.title,
