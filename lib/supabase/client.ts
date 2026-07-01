@@ -37,7 +37,7 @@ const createMockClient = () => {
 
 export const supabase: SupabaseClient = (supabaseUrl && supabaseAnonKey && isValidUrl(supabaseUrl))
   ? createClient(supabaseUrl, supabaseAnonKey)
-  : createMockClient() as SupabaseClient;
+  : createMockClient() as unknown as SupabaseClient;
 
 export interface DatabasePost {
   id: string;
